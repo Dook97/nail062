@@ -28,7 +28,7 @@ Několik jednoduchých vlastností teorie struktury shrneme v následujícím po
         \item Teorie $\Th(\A)$ je kompletní.
         \item Je-li $\A\in\M_L(T)$, potom $\Th(\A)$ je (kompletní) jednoduchá extenze teorie $T$.
         \item Pokud $\A\in\M_L(T)$ a $T$ je kompletní, potom je $\Th(\A)$ ekvivalentní s $T$, v tom případě $\Th(\A)=\Conseq_L(T)$.
-    \end{enumerate}    
+    \end{enumerate}
 \end{observation}
 
 Pomocí pojmu \emph{teorie struktury} můžeme také vyjádřit elementární ekvivalenci, pro $L$-struktury $\A,\B$ platí:
@@ -62,7 +62,7 @@ Schopnost (efektivně) popsat všechny kompletní jednoduché extenze je poměrn
 
 \subsubsection{Příklad: DeLO*}
 
-Teorie \emph{hustého lineárního uspořádání (DeLO*)}  je extenze teorie uspořádání o následující axiomy: 
+Teorie \emph{hustého lineárního uspořádání (DeLO*)}  je extenze teorie uspořádání o následující axiomy:
 \begin{itemize}
     \item axiom \emph{linearity} (někdy se mu říká také \emph{dichotomie}):
     $$
@@ -85,7 +85,7 @@ Mějme sentence $\varphi=(\exists x)(\forall y)(x\leq y)$ a $\psi=(\exists x)(\f
     \item $\DeLO^- = \DeLO^*\ \cup \ \{\varphi
     ,\neg\psi\}$
     \item $\DeLO^\pm = \DeLO^*\ \cup \ \{\varphi
-    ,\psi\}$        
+    ,\psi\}$
 \end{itemize}
 \end{proposition}
 
@@ -125,7 +125,7 @@ I tato verze má snadný důsledek pro konkrétní struktury:
     Mějme nekonečnou $L$-strukturu $\A$. Stejně jako v důkazu Důsledku \ref{corollary:loewenheim-skolem-without-equality} (ale za použití Löwenheim-Skolemovy věty s rovností) najdeme spočetnou strukturu $\B\equiv\A$. Protože v $\A$ platí pro každé $n\in\mathbb N$ sentence vyjadřující `existuje alespoň $n$ prvků' (což lze pomocí rovnosti snadno zapsat), platí tato sentence i v $\B$, $\B$ tedy nemůže být konečná a musí být spočetně nekonečná.
 \end{proof}
 
-Tento důsledek použijeme, abychom ukázali, že existuje spočetné těleso, které je algebraicky uzavřené:  
+Tento důsledek použijeme, abychom ukázali, že existuje spočetné těleso, které je algebraicky uzavřené:
 
 \subsubsection*{Spočetné algebraicky uzavřené těleso}
 
@@ -214,7 +214,7 @@ Pro konečné modely ale platí, že izomorfismus je totéž co elementární ek
     Označme jako $\A'$ expanzi $\A$ o jména prvků z $A$; jde o strukturu v jazyce $L'=L\cup\{c_a\mid a\in A\}$. Ukážeme, že $\B$ lze expandovat na $L'$-strukturu $\B$ tak, že $\A'\equiv \B'$. Potom, jak lze snadno ověřit, je zobrazení $h(a)= c_a^{\B'}$ izomorfismem $\A'$ na $\B'$, a tedy i izomorfismem jejich $L$-reduktů a $\A\simeq\B$.
 
     Stačí ukázat, že pro každé $c_a^{\A'}=a\in A$ existuje prvek $b\in B$ takový, že pro expanze o interpretaci konstantního symbolu $c_a$ platí $\langle  \A,a\rangle\equiv\langle\B,b\rangle$. Označme jako $\Omega$ množinu formulí $\varphi(x)$ takových, že $\langle \A,a\rangle \models \varphi(x/c_a)$, neboli $\A\models \varphi[e(x/a)]$. Protože je $A$ konečná množina, existuje konečně mnoho formulí $\varphi_1(x),\dots,\varphi_m(x)$ takových, že pro každou formuli $\varphi \in \Omega$ existuje $i$ takové, že $\A\models \varphi\liff\varphi_i$. Potom i $\B\models\varphi\liff\varphi_i$ (neboť $\A\equiv\B$, stačí vzít generální uzávěr této formule, což je sentence).
-    
+
     Protože v $\A$ platí sentence $(\exists x)\bigwedge_{i=1}^m\varphi_i$ (je splněna díky prvku $a\in A$) a $\B\equiv\A$, máme i $\B\models (\exists x)\bigwedge_{i=1}^m\varphi_i$. Jinými slovy, existuje $b\in B$ takové, že $\B\models\bigwedge_{i=1}^m\varphi_i[e(x/b)]$. Tedy pro každou $\varphi\in \Omega$ platí $\B\models \varphi[e(x/b)]$, tj. $\langle\mathcal{B},b\rangle\models \varphi(x/c_a)$, což jsme chtěli dokázat.
 \end{proof}
 
@@ -225,7 +225,7 @@ Pro konečné modely ale platí, že izomorfismus je totéž co elementární ek
 
 \subsection{Definovatelnost a automorfismy}
 
-Připomeňme si pojem definovatelné množiny, viz Sekce \ref{section:definability}. Ukážeme si užitečnou vlastnost definovatelných množin: jsou uzavřené (`invariantní') na automorfismy dané struktury. 
+Připomeňme si pojem definovatelné množiny, viz Sekce \ref{section:definability}. Ukážeme si užitečnou vlastnost definovatelných množin: jsou uzavřené (`invariantní') na automorfismy dané struktury.
 
 Nikoho nepřekvapí, že při automorfismu se musí izolovaný vrchol daného grafu zobrazit na izolovaný vrchol, vrchol stupně 4 na vrchol stejného stupně, nebo třeba trojice vrcholů, která tvoří trojúhelník, na trojúhelník. To nám může pomoci například při hledání automorfismů.
 
@@ -237,7 +237,7 @@ Nikoho nepřekvapí, že při automorfismu se musí izolovaný vrchol daného gr
 \begin{proof}
     Ukážeme jen verzi s parametry. Nechť $D=\varphi^{\A,\overline{b}}(\overline{x},\overline{y})$. Potom pro každé $\overline{a}\in A^n$ platí následující ekvivalence:
 \begin{align*}
-\overline{a}\in D\ 
+\overline{a}\in D\
 &\Leftrightarrow\ \A\models \varphi[e(\overline{x}/\overline{a},\overline{y}/\overline{b})]\\
 &\Leftrightarrow\  \A\models \varphi[(e\circ h)(\overline{x}/\overline{a},\overline{y}/\overline{b})]\\
 &\Leftrightarrow\ \A\models \varphi[e(\overline{x}/h(\overline{a}),\overline{y}/h(\overline{b}))]\\
@@ -247,8 +247,8 @@ Nikoho nepřekvapí, že při automorfismu se musí izolovaný vrchol daného gr
 \end{proof}
 
 \begin{example}
-    Uvažme následující graf $\mathcal G$. Najděme všechny množiny definovatelné z $\mathcal G$ s parametrem $0$, tj. množinu 
-    $\mathrm{Df}^1(\mathcal G,\{0\})$. 
+    Uvažme následující graf $\mathcal G$. Najděme všechny množiny definovatelné z $\mathcal G$ s parametrem $0$, tj. množinu
+    $\mathrm{Df}^1(\mathcal G,\{0\})$.
     \begin{center}
         \begin{tikzpicture}[every node/.style={circle,fill=blue!10,draw,minimum size=0.5cm,node distance=1.5cm}]
             \node (1) {$1$};
@@ -315,7 +315,7 @@ I(\kappa,DeLO^*)=\begin{cases}
 \end{cases}
 $$
 Spočetné modely až na izomorfismus jsou například:
-$$ 
+$$
 \mathbb Q=\langle \mathbb Q,\leq\rangle\simeq\mathbb Q\upharpoonright(0,1), \ \mathbb Q\upharpoonright(0,1], \ \mathbb Q \upharpoonright [0,1), \ \mathbb Q \upharpoonright [0,1]
 $$
 \end{corollary}
@@ -351,7 +351,7 @@ Analogické kritérium platí i pro kardinality $\kappa$ větší než $\omega$.
 
 \section{Axiomatizovatelnost}\label{section:axiomatizability}
 
-Na závěr této kapitoly se podíváme, za jakých okolností lze `popsat' (\emph{axiomatizovat}) třídu modelů respektive teorii. Zajímat nás bude také kdy si vystačíme s konečně mnoha axiomy, a kdy to lze pomocí otevřených axiomů (kterých může být i nekonečně mnoho). Srovnejte s Tvrzením \ref{proposition:axiomatize-in-DNF-CNF} z výrokové logiky. 
+Na závěr této kapitoly se podíváme, za jakých okolností lze `popsat' (\emph{axiomatizovat}) třídu modelů respektive teorii. Zajímat nás bude také kdy si vystačíme s konečně mnoha axiomy, a kdy to lze pomocí otevřených axiomů (kterých může být i nekonečně mnoho). Srovnejte s Tvrzením \ref{proposition:axiomatize-in-DNF-CNF} z výrokové logiky.
 
 \begin{definition}[Axiomatizovatelnost]
 Mějme třídu struktur $K\subseteq\M_L$ v nějakém jazyce $L$. Říkáme, že $K$ je
@@ -377,7 +377,7 @@ O $L$-teorii $T'$ říkáme, že je \emph{konečně} resp. \emph{otevřeně axio
 Začněme jednoduchým faktem:
 
 \begin{observation}
-    Je-li $K$ axiomatizovatelná, musí být uzavřená na elementární ekvivalenci.  
+    Je-li $K$ axiomatizovatelná, musí být uzavřená na elementární ekvivalenci.
 \end{observation}
 
 Z věty o kompaktnosti snadno získáme následující tvrzení, pomocí kterého lze ukázat neaxiomatizovatelnost např. konečných grafů, konečných grup, konečných těles.
@@ -386,8 +386,8 @@ Z věty o kompaktnosti snadno získáme následující tvrzení, pomocí kteréh
     Pokud má teorie libovolně velké konečné modely, potom má i nekonečný model. V tom případě není třída všech jejích konečných modelů axiomatizovatelná.
 \end{theorem}
 \begin{proof}
-    Je-li jazyk bez rovnosti, stačí vzít kanonický model pro některou bezespornou větev v tablu z $T$ pro položku $\F\bot$ ($T$ je bezesporná, neboť má model(y), tedy tablo není sporné).     
-    
+    Je-li jazyk bez rovnosti, stačí vzít kanonický model pro některou bezespornou větev v tablu z $T$ pro položku $\F\bot$ ($T$ je bezesporná, neboť má model(y), tedy tablo není sporné).
+
     Mějme jazyk s rovností a označme jako $T'$ následující extenzi teorie $T$ do jazyka rozšířeného o spočetně mnoho nových konstantních symbolů $c_i$:
     $$
     T'=T \cup \{\neg c_i = c_j \mid i\neq j\in\mathbb N\}
@@ -407,7 +407,7 @@ Z věty o kompaktnosti snadno získáme následující tvrzení, pomocí kteréh
 Ukážeme následující kritérium konečné axiomatizovatelnosti: jak třída struktur $K$ tak i $\overline{K}$ musí být axiomatizovatelné.
 
 \begin{theorem}[O konečné axiomatizovatelnosti]\label{theorem:finite-axiomatizability}
-    Mějme třídu struktur $K\subseteq \M_L$ a uvažme také její doplněk $\overline{K}=\M_L\setminus K$. Potom $K$ je konečně axiomatizovatelná, právě když $K$ i $\overline{K}$ jsou axiomatizovatelné.   
+    Mějme třídu struktur $K\subseteq \M_L$ a uvažme také její doplněk $\overline{K}=\M_L\setminus K$. Potom $K$ je konečně axiomatizovatelná, právě když $K$ i $\overline{K}$ jsou axiomatizovatelné.
 \end{theorem}
 \begin{proof}
 Je-li $K$ konečně axiomatizovatelná, potom je axiomatizovatelná i konečně mnoha sentencemi $\varphi_1,\dots,\varphi_n$ (nahradíme formule jejich generálními uzávěry). Jako axiomatizaci $\overline{K}$ stačí vzít sentenci $\psi=\neg(\varphi_1\land\varphi_2\land\dots\land\varphi_n)$. Zřejmě platí $\M(\psi)=\overline{K}$.
@@ -430,7 +430,7 @@ tím jsme dokázali, že $M(T)=M(T')$, tj. teorie $T'$ je hledanou konečnou axi
 Jako aplikaci si dokážeme, že tělesa charakteristiky 0 nejsou konečně axiomatizovatelná.
 
 \subsubsection*{Příklad: tělesa charakteristiky 0}
- 
+
 Nechť $T$ je teorie těles. Charakteristika tělesa je nejmenší počet jedniček, které je třeba sečíst, abychom dostali nulu (v tom případě musí být charakteristika prvočíslo---dokažte si!), nebo, pokud nikdy nedostaneme sčítáním jedniček nulu, říkáme že je charakteristika 0. Trochu formálněji:
 
 \begin{definition}[Charakteristika tělesa]
@@ -447,10 +447,10 @@ $$
 Konečná axiomatizace ale neexistuje.
 
 \begin{proposition}
-Třída $K$ těles charakteristiky $0$ není konečně axiomatizovatelná.   
+Třída $K$ těles charakteristiky $0$ není konečně axiomatizovatelná.
 \end{proposition}
 \begin{proof}
-Díky Větě \ref{theorem:finite-axiomatizability} stačí ukázat, že $\overline{K}$ (sestávající z těles nenulové charakteristiky a struktur, které nejsou tělesa) není axiomatizovatelná, což dokážeme sporem. Nechť existuje teorie $S$ taková, že $\M(S)=\overline{K}$. Potom teorie 
+Díky Větě \ref{theorem:finite-axiomatizability} stačí ukázat, že $\overline{K}$ (sestávající z těles nenulové charakteristiky a struktur, které nejsou tělesa) není axiomatizovatelná, což dokážeme sporem. Nechť existuje teorie $S$ taková, že $\M(S)=\overline{K}$. Potom teorie
 $S'=S\cup T'$ má model, neboť každá její konečná část má model: stačí vzít těleso prvočíselné charakteristiky větší než jakékoliv $p$ z axiomu $T'$ tvaru $\neg\, p1=0$. Nechť $\A$ je model $S'$. Potom je i $\A\in\M(S)=\overline{K}$. Zároveň je ale $\A\in\M(T')=K$, což je spor.
 \end{proof}
 
@@ -459,7 +459,7 @@ $S'=S\cup T'$ má model, neboť každá její konečná část má model: stač�
 Pro otevřenou axiomatizovatelnost existuje jednoduché sémantické kritérium: třída jejích modelů musí být uzavřená na podstruktury. Platí dokonce ekvivalence, dokážeme ale jen jednu implikaci (důkaz druhé je obtížnější).
 
 \begin{theorem}\label{theorem:open-axiomatizability}
-Pokud je teorie $T$ otevřeně axiomatizovatelná, potom je každá podstruktura modelu $T$ také modelem $T$.   
+Pokud je teorie $T$ otevřeně axiomatizovatelná, potom je každá podstruktura modelu $T$ také modelem $T$.
 \end{theorem}
 
 \begin{remark}
@@ -467,7 +467,7 @@ Pokud je teorie $T$ otevřeně axiomatizovatelná, potom je každá podstruktura
 \end{remark}
 
 \begin{proof}
-Nechť $T'$ je otevřená axiomatizace $T$. Mějme model $\A\models T'$  a podstrukturu $\B\subseteq\A$. Pro každou formuli $\varphi\in T'$ platí $\B\models\varphi$ (neboť $\varphi$ je otevřená), tedy i $\B\models T'$.  
+Nechť $T'$ je otevřená axiomatizace $T$. Mějme model $\A\models T'$  a podstrukturu $\B\subseteq\A$. Pro každou formuli $\varphi\in T'$ platí $\B\models\varphi$ (neboť $\varphi$ je otevřená), tedy i $\B\models T'$.
 \end{proof}
 
 \begin{example}

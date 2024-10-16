@@ -10,7 +10,7 @@ K hledání sporu používá rezoluční metoda jediné inferenční pravidlo, t
 $$
 \frac{\varphi\lor\psi,\neg\varphi\lor\chi}{\psi\lor\chi}
 $$
-V \emph{rezolučním pravidle}, které si ukážeme za chvíli, bude $\varphi$ \emph{literál}, a $\psi,\chi$ budou {klauzule}. 
+V \emph{rezolučním pravidle}, které si ukážeme za chvíli, bude $\varphi$ \emph{literál}, a $\psi,\chi$ budou {klauzule}.
 
 \begin{exercise}
 Rozmyslete si, že pravidlo řezu je \emph{korektní}. (Co to znamená, a proč to platí?)
@@ -31,7 +31,7 @@ Nejprve představíme úspornější zápis CNF výroků, tzv. \emph{množinový
 
 V množinové reprezentaci odpovídají modely množinám literálů, které obsahují pro každou výrokovou proměnnou $p$ právě jeden z literálů $p,\neg p$:
 \begin{itemize}
-    \item \emph{(Částečné) ohodnocení $\mathcal V$} je libovolná množina literálů, která je \emph{konzistentní}, tj. neobsahuje dvojici opačných literálů. 
+    \item \emph{(Částečné) ohodnocení $\mathcal V$} je libovolná množina literálů, která je \emph{konzistentní}, tj. neobsahuje dvojici opačných literálů.
     \item Ohodnocení je \emph{úplné}, pokud obsahuje pozitivní nebo negativní literál pro každou výrokovou proměnnou.
     \item Ohodnocení $\mathcal V$ \emph{splňuje} formuli $S$, píšeme $\mathcal V\models S$, pokud $\mathcal V$ obsahuje nějaký literál z každé klauzule v $S$, tj.:
     $$
@@ -100,7 +100,7 @@ Rezoluční strom klauzule $C$ z CNF formule $S$ je \emph{konečný} binární s
     \item v kořeni je $C$,
     \item v listech jsou klauzule z $S$,
     \item v každém vnitřním vrcholu je rezolventa klauzulí ze synů tohoto vrcholu.
-\end{itemize}    
+\end{itemize}
 \end{definition}
 
 \begin{example}\label{example:resolution-tree}
@@ -127,7 +127,7 @@ Rezoluční strom prázdné klauzule $\square$ z CNF formule $S$ z Příkladu \r
 
 Je snadné ukázat následující pozorování, indukcí podle hloubky stromu a délky rezolučního důkazu:
 
-\begin{observation} Klauzule $C$ má rezoluční strom z CNF formule $S$, právě když $S\proves_R C$.  
+\begin{observation} Klauzule $C$ má rezoluční strom z CNF formule $S$, právě když $S\proves_R C$.
 \end{observation}
 
 Každému rezolučnímu důkazu odpovídá jednoznačný rezoluční strom. Naopak, z jednoho rezolučního stromu můžeme získat více rezolučních důkazů: jsou dané libovolnou procházkou po vrcholech stromu, při které navštívíme vnitřní vrchol až poté, co jsme navštívili oba jeho syny.
@@ -151,14 +151,14 @@ Zaveďme ještě jeden pojem, tzv. \emph{rezoluční uzávěr}, který obsahuje 
 
 \section{Korektnost a úplnost rezoluční metody}
 
-Rezoluční metoda je také korektní i úplná. 
+Rezoluční metoda je také korektní i úplná.
 
 \subsection{Korektnost rezoluce}
 
 Korektnost dokážeme snadno indukcí podle délky rezolučního důkazu.
 
 \begin{theorem}[O korektnosti rezoluce]\label{theorem:soundness-resolution}
-    
+
 Je-li formule $S$ rezolucí zamítnutelná, potom je $S$ nesplnitelná.
 \end{theorem}
 \begin{proof}
@@ -179,7 +179,7 @@ V důkazu úplnosti budeme potřebovat zkonstruovat rezoluční strom, jeho kons
     Je-li $S$ formule a $\ell$ literál, potom \emph{dosazením} $\ell$ do $S$ myslíme formuli:
     $$
         S^\ell=\{C\setminus\{\bar\ell\}\mid \ell\notin C\in S\}
-    $$    
+    $$
 \end{definition}
 
 \begin{observation} Zde shrneme několik jednoduchých faktů o dosazení:
@@ -188,13 +188,13 @@ V důkazu úplnosti budeme potřebovat zkonstruovat rezoluční strom, jeho kons
     \item $S^\ell$ neobsahuje v žádné klauzuli literál $\ell$ ani $\bar\ell$ (vůbec tedy neobsahuje prvovýrok z $\ell$)
     \item Pokud $S$ neobsahovala literál $\ell$ ani $\bar\ell$, potom $S^\ell=S$.
     \item Pokud $S$ obsahovala jednotkovou klauzuli $\{\bar\ell\}$, potom $\square\in S^\ell$, tedy $S^\ell$ je sporná.
-\end{itemize}    
+\end{itemize}
 \end{observation}
 
 Klíčovou vlastnost dosazení vyjadřuje následující lemma:
 
 \begin{lemma}\label{lemma:tree-of-reductions}
-$S$ je splnitelná, právě když je splnitelná $S^\ell$ nebo $S^{\bar\ell}$.    
+$S$ je splnitelná, právě když je splnitelná $S^\ell$ nebo $S^{\bar\ell}$.
 \end{lemma}
 \begin{proof}
 Mějme ohodnocení $\mathcal V\models S$, to  nemůže obsahovat $\ell$ i $\bar\ell$ (musí být konzistentní); bez újmy na obecnosti  předpokládejme, že $\bar\ell\notin\mathcal V$, a ukažme, že $\mathcal V\models S^\ell$. Vezměme libovolnou klauzuli v $S^\ell$. Ta je tvaru $C\setminus\{\bar\ell\}$ pro klauzuli $C\in S$ (neobsahující literál $\ell$). Víme, že $\mathcal V\models C$, protože ale $\mathcal V$ neobsahuje $\bar\ell$, muselo ohodnocení $\mathcal V$ splnit nějaký jiný literál $C$, takže platí i $\mathcal V\models C\setminus\{\bar\ell\}$.
@@ -203,12 +203,12 @@ Naopak, předpokládejme že existuje ohodnocení $\mathcal V$ splňující $S^\
 \end{proof}
 %todo frozen bucket lemma
 
-Zda je daná \emph{konečná} formule splnitelná bychom tedy mohli zjišťovat rekurzivně (metodou \emph{rozděl a panuj}), dosazením obou možných literálů pro (nějakou, třeba první) výrokovou proměnnou vyskytující se ve formuli, a rozvětvením výpočtu. V zásadě jde o podobný princip jako v algoritmu DPLL (viz Sekce \ref{section:DPLL}). Výslednému stromu říkáme \emph{strom dosazení}. 
+Zda je daná \emph{konečná} formule splnitelná bychom tedy mohli zjišťovat rekurzivně (metodou \emph{rozděl a panuj}), dosazením obou možných literálů pro (nějakou, třeba první) výrokovou proměnnou vyskytující se ve formuli, a rozvětvením výpočtu. V zásadě jde o podobný princip jako v algoritmu DPLL (viz Sekce \ref{section:DPLL}). Výslednému stromu říkáme \emph{strom dosazení}.
 
 \begin{example}
 Ilustrujme si tento koncept na příkladě, zkonstruujme strom dosazení pro formuli $S=\{\{p\},\{\neg q\},\{\neg p,\neg q\}\}$:
 \begin{center}
-    \begin{forest}    
+    \begin{forest}
     [{$S$}
         [{$S^p=\{\{\neg q\}\}$}
             [{$S^{pq}=\{\square\}$}, tikz={\node[fit to=tree,label=below:\textcolor{red}{$\otimes$}] {};]}]
@@ -218,7 +218,7 @@ Ilustrujme si tento koncept na příkladě, zkonstruujme strom dosazení pro for
     ]
     \end{forest}
 \end{center}
-Jakmile větev obsahuje prázdnou klauzuli $\square$, je nesplnitelná a nemusíme v ní pokračovat. V listech jsou buď nesplnitelné teorie, nebo prázdná teorie: v tom případě z posloupnosti dosazení získáme splňující ohodnocení.    
+Jakmile větev obsahuje prázdnou klauzuli $\square$, je nesplnitelná a nemusíme v ní pokračovat. V listech jsou buď nesplnitelné teorie, nebo prázdná teorie: v tom případě z posloupnosti dosazení získáme splňující ohodnocení.
 \end{example}
 
 Z konstrukce je vidět, jak postupovat v případě konečné formule. Strom dosazení ale dává smysl, a následující důsledek platí, i pro nekonečné formule:
@@ -229,11 +229,11 @@ Z konstrukce je vidět, jak postupovat v případě konečné formule. Strom dos
 \end{corollary}
 
 \begin{proof}
-    Pro konečnou formuli $S$ plyne z diskuze výše, můžeme snadno dokázat indukcí podle velikosti $\Var(S)$: 
+    Pro konečnou formuli $S$ plyne z diskuze výše, můžeme snadno dokázat indukcí podle velikosti $\Var(S)$:
     \begin{itemize}
-        \item Je-li $|\Var(S)|=0$, máme $S=\emptyset$ nebo $S=\{\square\}$, v obou případech je strom dosazení jednoprvkový a tvrzení platí. 
+        \item Je-li $|\Var(S)|=0$, máme $S=\emptyset$ nebo $S=\{\square\}$, v obou případech je strom dosazení jednoprvkový a tvrzení platí.
         \item V indukčním kroku vybereme libovolný literál $\ell\in\Var(S)$ a aplikujeme Lemma \ref{lemma:tree-of-reductions}.
-    \end{itemize} 
+    \end{itemize}
 Je-li $S$ nekonečná a splnitelná, potom má splňující ohodnocení, to se `shoduje' s odpovídající (nekonečnou) větví ve stromu dosazení. Je-li nekonečná a nesplnitelná, potom podle Věty o kompaktnosti existuje konečná část $S'\subseteq S$, která je také nesplnitelná. Po dosazení pro všechny proměnné z $\Var(S')$ bude v každé větvi $\square$, to nastane po konečně mnoha krocích.
 \end{proof}
 
@@ -241,9 +241,9 @@ Je-li $S$ nekonečná a splnitelná, potom má splňující ohodnocení, to se `
 
 \begin{theorem}[O úplnosti rezoluce]
 Je-li $S$ nesplnitelná, je rezolucí zamítnutelná (tj. $S\proves_R\square$).
-\end{theorem}   
+\end{theorem}
 \begin{proof}
-Je-li $S$ nekonečná, má z Věty o kompaktnosti konečnou nesplnitelnou část $S'$. Rezoluční zamítnutí $S'$ je také rezolučním zamítnutím $S$. Předpokládejme tedy, že $S$ je konečná. 
+Je-li $S$ nekonečná, má z Věty o kompaktnosti konečnou nesplnitelnou část $S'$. Rezoluční zamítnutí $S'$ je také rezolučním zamítnutím $S$. Předpokládejme tedy, že $S$ je konečná.
 
 Důkaz provedeme indukcí podle počtu proměnných v $S$. Je-li $|\Var(S)|=0$, jediná možná nesplnitelná formule bez proměnných je $S=\{\square\}$ a máme jednokrokový důkaz $S\proves_R\square$. Jinak vyberme $p\in\Var(S)$. Podle Lemmatu \ref{lemma:tree-of-reductions} jsou $S^p$ i $S^{\bar p}$ nesplnitelné. Mají o jednu proměnnou méně, tedy podle indukčního předpokladu existují rezoluční stromy $T$ pro $S^p\proves_R\square$ a $T'$ pro $S^{\bar p}\proves_R\square$.
 
@@ -285,7 +285,7 @@ Rezoluční důkaz můžeme kromě rezolučního stromu zorganizovat také ve fo
     kde $C_i$ říkáme \emph{centrální} klauzule, $C_0$ je \emph{počáteční}, $C_{n+1}=C$ je \emph{koncová}, $B_i$ jsou \emph{boční} klauzule, a platí:
     \begin{itemize}
         \item $C_0\in S$, pro $i\leq n$ je $C_{i+1}$ rezolventou $C_i$ a $B_i$,
-        \item $B_0\in S$, pro $i\leq n$ je $B_i\in S$ nebo $B_i=C_j$ pro nějaké $j<i$. 
+        \item $B_0\in S$, pro $i\leq n$ je $B_i\in S$ nebo $B_i=C_j$ pro nějaké $j<i$.
     \end{itemize}
     \emph{Lineární zamítnutí} $S$ je lineární důkaz $\square$ z $S$. Lineární důkaz můžeme znázornit takto:
     \begin{center}
@@ -306,11 +306,11 @@ Rezoluční důkaz můžeme kromě rezolučního stromu zorganizovat také ve fo
                             [B_1]
                         ]
                     ]
-                    [B_{n-1}]                    
+                    [B_{n-1}]
                 ]
                 [B_n]
             ]
-        \end{forest}  
+        \end{forest}
     \end{center}
 \end{definition}
 
@@ -333,11 +333,11 @@ Rezoluční důkaz můžeme kromě rezolučního stromu zorganizovat také ve fo
                         ]
                         [{\{\neg p,q\}}]
                     ]
-                    [{\{\neg p,\neg q\}}]                    
+                    [{\{\neg p,\neg q\}}]
                 ]
                 [{\textcolor{red}{\{p\}}}]
             ]
-        \end{forest}  
+        \end{forest}
     \end{center}
     Poslední boční klauzule $\textcolor{red}{\{p\}}$ (červeně) není z $S$, ale je rovna předchozí centrální klauzuli (modře).
 \end{example}
@@ -357,9 +357,9 @@ Důkaz opačné implikace neuvedeme. Plyne z \emph{úplnosti} lineární rezoluc
 \subsection{LI-rezoluce}
 
 V obecném lineárním důkazu může být každá následující boční klauzule buď axiom z $S$ nebo jedna z předchozích centrálních klauzulí. Pokud zakážeme druhou možnost, budeme-li tedy požadovat, aby všechny boční klauzule byly z $S$, dostaneme tzv. \emph{LI (linear-input)} rezoluci:
-    
+
 \begin{definition}[LI-důkaz]
-    \emph{LI-důkaz} (rezolucí) klauzule $C$ z formule $S$ je lineární důkaz 
+    \emph{LI-důkaz} (rezolucí) klauzule $C$ z formule $S$ je lineární důkaz
     $$
     \begin{bmatrix}
         C_0 \\
@@ -382,7 +382,7 @@ V obecném lineárním důkazu může být každá následující boční klauzu
     LI-důkaz přímo dává rezoluční strom (všechny listy jsou axiomy), a to ve speciálním tvaru, kterému bychom mohli říkat `chlupatá cesta'. A naopak, z rezolučního stromu ve tvaru chlupaté cesty okamžitě získáme LI-důkaz: vrcholy na cestě jsou centrální klauzule, chlupy jsou boční klauzule.
 \end{remark}
 
-Zatímco \emph{lineární rezoluce}\footnote{Tj. dokazovací systém založený na hledání \emph{lineárních} důkazů resp. zamítnutí.} je jen jiný pohled na obecný rezoluční důkaz, \emph{LI-rezoluce} přináší zásadní omezení: ztrácíme \emph{úplnost} (ne každá nesplnitelná formule má LI-zamítnutí). Na druhou stranu, LI-důkazy je jednodušší konstruovat.\footnote{V každém kroku máme k volbě jen klauzule z $S$, nikoliv předchozí dokázané centrální klauzule.} 
+Zatímco \emph{lineární rezoluce}\footnote{Tj. dokazovací systém založený na hledání \emph{lineárních} důkazů resp. zamítnutí.} je jen jiný pohled na obecný rezoluční důkaz, \emph{LI-rezoluce} přináší zásadní omezení: ztrácíme \emph{úplnost} (ne každá nesplnitelná formule má LI-zamítnutí). Na druhou stranu, LI-důkazy je jednodušší konstruovat.\footnote{V každém kroku máme k volbě jen klauzule z $S$, nikoliv předchozí dokázané centrální klauzule.}
 
 \subsection{Úplnost LI-rezoluce pro Hornovy formule}
 
@@ -409,15 +409,15 @@ Bude se nám hodit následující jednoduché pozorování:
 Nyní vyslovíme a dokážeme Větu o úplnosti LI-rezoluce pro Hornovské formule. Důkaz dává také návod, jak LI-zamítnutí zkonstruovat, a to na základě průběhu jednotkové propagace. Tento postup ilustrujeme na příkladu níže, který můžete sledovat souběžně s čtením důkazu.
 
 \begin{theorem}[O úplnosti LI-rezoluce pro Hornovy formule]\label{theorem:completeness-of-li-resolution-for-horn}
-Je-li Hornova formule $T$ splnitelná, a $T\cup\{G\}$ je nesplnitelná pro cíl $G$, potom $T\cup\{G\}\proves_{LI}\square$, a to LI-zamítnutím, které začíná cílem $G$.   
+Je-li Hornova formule $T$ splnitelná, a $T\cup\{G\}$ je nesplnitelná pro cíl $G$, potom $T\cup\{G\}\proves_{LI}\square$, a to LI-zamítnutím, které začíná cílem $G$.
 \end{theorem}
 \begin{proof}
     Podobně jako ve Větě o úplnosti rezoluce můžeme díky Větě o kompaktnosti předpokládat, že $T$ je konečná. Důkaz (konstrukci LI-zamítnutí) provedeme indukcí podle počtu proměnných v $T$.
 
     Z Pozorování \ref{observation:horn-fact-goal} plyne, že $T$ obsahuje fakt $\{p\}$ pro nějakou výrokovou proměnnou $p$. Protože $T\cup\{G\}$ je nesplnitelná, je podle Lemmatu \ref{lemma:tree-of-reductions} nesplnitelná také $(T\cup\{G\})^p=T^p\cup\{G^p\}$, kde $G^p=G\setminus\{\neg p\}$.
-    
-    Pokud $G^p=\square$, potom $G=\{\neg p\}$, $\square$ je rezolventa $G$ a $\{p\}\in T$, a máme jednokrokové LI-zamítnutí $T\cup\{G\}$ (to je báze indukce). 
-    
+
+    Pokud $G^p=\square$, potom $G=\{\neg p\}$, $\square$ je rezolventa $G$ a $\{p\}\in T$, a máme jednokrokové LI-zamítnutí $T\cup\{G\}$ (to je báze indukce).
+
     Jinak využijeme indukčního předpokladu. Všimněte si, že formule $T^p$ je splnitelná (stejným ohodnocením jako $T$, neboť to musí obsahovat $p$ kvůli faktu $\{p\}$, tedy neobsahuje $\neg p$) a má méně proměnných než $T$. Tedy podle indukčního předpokladu existuje LI-odvození $\square$ z $T^p\cup\{G^p\}$ začínající $G^p=G\setminus\{\neg p\}$.
 
     Hledané LI-zamítnutí $T\cup\{G\}$ začínající $G$ zkonstruujeme (podobně jako v důkazu Věty o úplnosti rezoluce) přidáním literálu $\neg p$ do všech listů, které už nejsou v $T\cup\{G\}$ (tedy vznikly odebráním $\neg p$), a do všech vrcholů nad nimi. Tím získáme $T\cup\{G\}\proves_{LI}\neg p$, na závěr přidáme boční klauzuli $\{p\}$ a odvodíme $\square$.
@@ -425,7 +425,7 @@ Je-li Hornova formule $T$ splnitelná, a $T\cup\{G\}$ je nesplnitelná pro cíl 
 %todo: another potential frozen bucket, restructure the induction proof?
 
 \begin{example}\label{example:linear-input-resolution}
-Mějme (splnitelnou, hornovskou) teorii $T$, kterou zapíšeme v množinové reprezentaci jako formuli $T=\{\{p,\neg r,\neg s\},\{\neg q,r\},\{q,\neg s\},\{s\}\}$. Představte si, že chceme dokázat, že v teorii $T$ platí $p\land q$.\footnote{Tj. v Prologu bychom položili `dotaz' (`query'): \texttt{?-p,q.}} V rezoluční metodě uvážíme cíl $G=\{\neg p,\neg q\}$ a ukážeme, že $T\cup\{G\}\proves_{LI}\square$. 
+Mějme (splnitelnou, hornovskou) teorii $T$, kterou zapíšeme v množinové reprezentaci jako formuli $T=\{\{p,\neg r,\neg s\},\{\neg q,r\},\{q,\neg s\},\{s\}\}$. Představte si, že chceme dokázat, že v teorii $T$ platí $p\land q$.\footnote{Tj. v Prologu bychom položili `dotaz' (`query'): \texttt{?-p,q.}} V rezoluční metodě uvážíme cíl $G=\{\neg p,\neg q\}$ a ukážeme, že $T\cup\{G\}\proves_{LI}\square$.
 
 Dle návodu z důkazu najdeme ve formuli $T$ fakt, a provedeme pomocí něho jednotkovou propagaci v $T$ i v cíli $G$. Postup opakujeme, dokud není formule prázdná:
 \begin{itemize}
@@ -442,7 +442,7 @@ Nyní zpětným postupem sestrojíme rezoluční zamítnutí:
         \begin{forest}
             for tree={math content,grow=west,text height=2ex, text depth=1ex, l sep=3em}
                         [{\square}]                       ]
-        \end{forest} 
+        \end{forest}
     \end{center}
     \item $T^{sqr},G^{sqr}\proves_{LI}\square$:
     \begin{center}
@@ -451,11 +451,11 @@ Nyní zpětným postupem sestrojíme rezoluční zamítnutí:
                         [{\square}
                             [,phantom]
                             [{\{\neg p\}}]
-                            [{\{p\}}]                        
+                            [{\{p\}}]
                         ]
-        \end{forest} 
+        \end{forest}
     \end{center}
-    
+
     \item $T^{sq},G^{sq}\proves_{LI}\square$:
     \begin{center}
         \begin{forest}
@@ -465,13 +465,13 @@ Nyní zpětným postupem sestrojíme rezoluční zamítnutí:
                         [{\{\neg r\}}
                             [,phantom]
                             [{\{\neg p\}}]
-                            [{\{p,\neg r\}}]                        
+                            [{\{p,\neg r\}}]
                         ]
                         [{\{r\}}]
                     ]
-        \end{forest} 
+        \end{forest}
     \end{center}
-    
+
     \item $T^{s},G^{s}\proves_{LI}\square$:
     \begin{center}
         \begin{forest}
@@ -483,15 +483,15 @@ Nyní zpětným postupem sestrojíme rezoluční zamítnutí:
                         [{\{\neg q,\neg r\}}
                             [,phantom]
                             [{\{\neg p,\neg q\}}]
-                            [{\{p,\neg r\}}]                        
+                            [{\{p,\neg r\}}]
                         ]
                         [{\{\neg q,r\}}]
                     ]
-                    [{\{q\}}]                    
+                    [{\{q\}}]
                 ]
-        \end{forest} 
+        \end{forest}
     \end{center}
-    
+
     \item $T,G\proves_{LI}\square$
     \begin{center}
         \begin{forest}
@@ -505,11 +505,11 @@ Nyní zpětným postupem sestrojíme rezoluční zamítnutí:
                         [{\{\neg q,\neg r,\neg s\}}
                             [,phantom]
                             [{\{\neg p,\neg q\}}]
-                            [{\{p,\neg r,\neg s\}}]                        
+                            [{\{p,\neg r,\neg s\}}]
                         ]
                         [{\{\neg q,r\}}]
                     ]
-                    [{\{q,\neg s\}}]                    
+                    [{\{q,\neg s\}}]
                 ]
                 [{\{s\}}]
             ]
@@ -532,11 +532,11 @@ Jako příklad programu v Prologu využijeme teorii (formuli) $T$ a dotaz $p\lan
     p:-r,s.
     r:-q.
     q:-s.
-    s.    
+    s.
 \end{verbatim}
 A programu položíme dotaz:
 \begin{verbatim}
-    ?-p,q.    
+    ?-p,q.
 \end{verbatim}
 \end{example}
 

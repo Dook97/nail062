@@ -1,7 +1,7 @@
-\chapter{Rezoluce v predikátové logice} 
+\chapter{Rezoluce v predikátové logice}
 \label{chapter:predicate-resolution}
 
-V této kapitole si ukážeme, jak lze adaptovat rezoluční metodu, kterou jsme představili v Kapitole \ref{chapter:propositional-resolution}, na predikátovou logiku. Tato kapitola, poslední v části o predikátové logice, je poměrně rozsáhlá, proto uveďme přehled její struktury: 
+V této kapitole si ukážeme, jak lze adaptovat rezoluční metodu, kterou jsme představili v Kapitole \ref{chapter:propositional-resolution}, na predikátovou logiku. Tato kapitola, poslední v části o predikátové logice, je poměrně rozsáhlá, proto uveďme přehled její struktury:
 
 \begin{itemize}
     \item Začneme neformálním úvodem (Sekce \ref{section:predicate-resolution-intro}).
@@ -34,9 +34,9 @@ Všimněme si nejprve, že jsou-li teorie $T$ a sentence $\varphi$ \emph{otevře
     Nechť $T=\{(\forall x)P(x),(\forall x)(P(x)\limplies Q(x))\}$ a $\varphi=(\exists x)Q(x)$. Je snadno vidět, že platí
     $$
     T\sim \{P(x),P(x)\limplies Q(x)\}\sim\{P(x),\neg P(x)\lor Q(x)\}
-    $$ 
+    $$
     a také:
-    $$\neg\varphi=\neg(\exists x)Q(x)\sim(\forall x)\neg Q(x)\sim\neg Q(x)$$ 
+    $$\neg\varphi=\neg(\exists x)Q(x)\sim(\forall x)\neg Q(x)\sim\neg Q(x)$$
     Teorii $T\cup\{\neg \varphi\}$ tedy můžeme převést na \emph{ekvivalentní} CNF formuli
     $$
     S = \{\{P(x)\},\{\neg P(x),Q(x)\},\{\neg Q(x)\}\}
@@ -44,12 +44,12 @@ Všimněme si nejprve, že jsou-li teorie $T$ a sentence $\varphi$ \emph{otevře
     kterou snadno zamítneme rezolucí ve dvou krocích. (Představte si místo $P(x)$ výrokovou proměnnou $p$ a místo $Q(x)$ výrokovou proměnnou $q$.)
 \end{example}
 
-Obecně se nám to ale nepodaří, problémy dělá zejména existenční kvantifikátor. Na rozdíl od výrokové logiky \emph{není} každá teorie ekvivalentní CNF formuli. Ukážeme si ale postup, kterým lze vždy najít \emph{ekvisplnitelnou} CNF formuli, tj. takovou, která je nesplnitelná, \emph{právě když} $T\cup\{\neg \varphi\}$ je nesplnitelná, což nám k důkazu sporem stačí. Této konstrukci se říká \emph{Skolemizace} a spočívá v nahrazení existenčně kvantifikovaných proměnných nově přidanými konstantními resp. funkčními symboly. 
+Obecně se nám to ale nepodaří, problémy dělá zejména existenční kvantifikátor. Na rozdíl od výrokové logiky \emph{není} každá teorie ekvivalentní CNF formuli. Ukážeme si ale postup, kterým lze vždy najít \emph{ekvisplnitelnou} CNF formuli, tj. takovou, která je nesplnitelná, \emph{právě když} $T\cup\{\neg \varphi\}$ je nesplnitelná, což nám k důkazu sporem stačí. Této konstrukci se říká \emph{Skolemizace} a spočívá v nahrazení existenčně kvantifikovaných proměnných nově přidanými konstantními resp. funkčními symboly.
 
 Například, formuli $(\exists x)\psi(x)$ nahradíme formulí $\psi(x/c)$, kde $c$ je nový konstantní symbol, který reprezentuje \emph{svědka}, tj. prvek, díky kterému je existenční kvantifikátor splněn. Protože takových prvků může být mnoho, ztrácíme \emph{ekvivalenci} teorií, platí ale, že je-li splnitelná původní formule, je splnitelná, i nová formule, a naopak.
 
 \begin{example}
-  Máme-li $T=\{(\exists x)P(x),P(x)\liff Q(x)\}$ a $\varphi=(\exists x)Q(x)$, potom 
+  Máme-li $T=\{(\exists x)P(x),P(x)\liff Q(x)\}$ a $\varphi=(\exists x)Q(x)$, potom
   $$
   \neg\varphi\sim(\forall x)\neg Q(x)\sim\neg Q(x)
   $$
@@ -64,19 +64,19 @@ Například, formuli $(\exists x)\psi(x)$ nahradíme formulí $\psi(x/c)$, kde $
   Ta není ekvivalentní teorii $T\cup\{\neg \varphi\}$, ale je s ní \emph{ekvisplnitelná} (v tomto případě jsou obě nesplnitelné).
 \end{example}
 
-Skolemizace může být i složitější, ne vždy stačí konstantní symbol. Pokud máme formuli tvaru $(\forall x)(\exists y)\psi(x,y)$, závisí zvolený svědek pro $y$ na zvolené hodnotě pro $x$, tedy `$y$ je funkcí $x$'. V tomto případě musíme $y$ nahradit $f(x)$, kde $f$ je nový unární funkční symbol. Tím dostáváme formuli $(\forall x)\psi(x,y/f(x))$ a univerzální kvantifikátor nyní můžeme odstranit a psát jen $\psi(x,y/f(x))$, což už je otevřená formule, byť v jiném jazyce (rozšířeném o symbol $f$). Skolemizaci formálně popíšeme, a potřebné vlastnosti dokážeme, v Sekci \ref{section:skolemization}. 
+Skolemizace může být i složitější, ne vždy stačí konstantní symbol. Pokud máme formuli tvaru $(\forall x)(\exists y)\psi(x,y)$, závisí zvolený svědek pro $y$ na zvolené hodnotě pro $x$, tedy `$y$ je funkcí $x$'. V tomto případě musíme $y$ nahradit $f(x)$, kde $f$ je nový unární funkční symbol. Tím dostáváme formuli $(\forall x)\psi(x,y/f(x))$ a univerzální kvantifikátor nyní můžeme odstranit a psát jen $\psi(x,y/f(x))$, což už je otevřená formule, byť v jiném jazyce (rozšířeném o symbol $f$). Skolemizaci formálně popíšeme, a potřebné vlastnosti dokážeme, v Sekci \ref{section:skolemization}.
 
 Nyní se podívejme na \emph{rezoluční pravidlo}. To je v predikátové logice složitější. Ukážeme si opět jen několik příkladů, formální definici necháme na později (Sekce \ref{section:predicate-resolution-method}).
 
 \begin{example}
-    V předchozím příkladu jsme dospěli k následující CNF formuli $S$, která je nesplnitelná, a chtěli bychom ji tedy rezolucí zamítnout:    
+    V předchozím příkladu jsme dospěli k následující CNF formuli $S$, která je nesplnitelná, a chtěli bychom ji tedy rezolucí zamítnout:
     $$
     S = \{\{P(c)\},\{\neg P(x),Q(x)\},\{\neg Q(x),P(x)\},\{\neg Q(x)\}\}
     $$
     Pokud bychom se na ni podívali `na úrovni výrokové logiky' (`ground level') a nahradili každou atomickou formuli novou výrokovou proměnnou, dostali bychom $\{\{r\},\{\neg p,q\},\{\neg q,p\},\{\neg q\}\}$, což není nesplnitelné. Potřebujeme využít toho, že $P(c)$ a $P(x)$ mají `podobnou strukturu' (jsou \emph{unifikovatelné}).
 
-    Protože v $S$ platí klauzule $\{\neg P(x),Q(x)\}$ (je to axiom), platí i po provedení \emph{libovolné substituce}, tj. klauzule $\{\neg P(x/t),Q(x/t)\}$ je důsledkem $S$ pro libovolný term $t$. Mohli bychom si představit, že do  $S$ `přidáváme' všechny takto získané klauzule.\footnote{Těch je nekonečně mnoho, nekonečně mnoho je už jen \emph{variant} jedné klauzule, tj. klauzulí vzniklých pouhým přejmenováním proměnných. To nám ale nevadí, CNF formule může být dle definice nekonečná.} Výsledná CNF formule by po převedení na `úroveň výrokové logiky' už byla nesplnitelná. 
-    
+    Protože v $S$ platí klauzule $\{\neg P(x),Q(x)\}$ (je to axiom), platí i po provedení \emph{libovolné substituce}, tj. klauzule $\{\neg P(x/t),Q(x/t)\}$ je důsledkem $S$ pro libovolný term $t$. Mohli bychom si představit, že do  $S$ `přidáváme' všechny takto získané klauzule.\footnote{Těch je nekonečně mnoho, nekonečně mnoho je už jen \emph{variant} jedné klauzule, tj. klauzulí vzniklých pouhým přejmenováním proměnných. To nám ale nevadí, CNF formule může být dle definice nekonečná.} Výsledná CNF formule by po převedení na `úroveň výrokové logiky' už byla nesplnitelná.
+
     \emph{Unifikační algoritmus} nám ale rovnou řekne, že správná substituce je $x/c$, a toto zahrneme už do \emph{rezolučního pravidla}, tedy \emph{rezolventou} klauzulí $\{P(c)\}$ a $\{\neg P(x),Q(x)\}$ bude klauzule $\{Q(c)\}$.
 \end{example}
 
@@ -91,8 +91,8 @@ Unifikace může být i složitější, a upozorněme ještě na jeden rozdíl o
     $$
     \models(\forall x)(\psi \land \chi) \leftrightarrow (\forall x)\psi \land (\forall x)\chi
     $$
-    
-    Jak je vidět v předchozím příkladě, budeme také vyžadovat, aby klauzule v rezolučním pravidle měly disjunktní množiny proměnných; toho lze dosáhnout přejmenováním proměnných, což je speciální případ substituce.  
+
+    Jak je vidět v předchozím příkladě, budeme také vyžadovat, aby klauzule v rezolučním pravidle měly disjunktní množiny proměnných; toho lze dosáhnout přejmenováním proměnných, což je speciální případ substituce.
 \end{remark}
 
 
@@ -101,8 +101,8 @@ Unifikace může být i složitější, a upozorněme ještě na jeden rozdíl o
 V této sekci ukážeme postup, jak redukovat otázku splnitelnosti dané teorie $T$ na otázku splnitelnosti \emph{otevřené} teorie $T'$. Připomeňme, že $T$ a $T'$ obecně nebudou ekvivalentní, budou ale \emph{ekvisplnitelné}:
 
 \begin{definition}[Ekvisplnitelnost]
-Mějme teorii $T$ v jazyce $L$ a teorii $T'$ v ne nutně stejném jazyce $L'$. Říkáme, že $T$ a $T'$ jsou \emph{ekvisplnitelné}, 
-pokud platí: 
+Mějme teorii $T$ v jazyce $L$ a teorii $T'$ v ne nutně stejném jazyce $L'$. Říkáme, že $T$ a $T'$ jsou \emph{ekvisplnitelné},
+pokud platí:
 $$
 \text{$T$ má model}\ \Leftrightarrow\ \text{$T'$ má model}
 $$
@@ -125,15 +125,15 @@ Nejprve ukážeme postup, jakým můžeme z libovolné formule `vytknout' kvanti
     $$
     (Q_1x_1)\dots(Q_nx_n)\varphi'
     $$
-    kde $Q_i$ je kvantifikátor ($\forall$ nebo $\exists$) a formule $\varphi'$ je otevřená. Formuli $\varphi'$ potom říkáme \emph{otevřené jádro} $\varphi$ a $(Q_1x_1)\dots(Q_nx_n)$ je \emph{kvantifikátorový prefix}. 
-    
+    kde $Q_i$ je kvantifikátor ($\forall$ nebo $\exists$) a formule $\varphi'$ je otevřená. Formuli $\varphi'$ potom říkáme \emph{otevřené jádro} $\varphi$ a $(Q_1x_1)\dots(Q_nx_n)$ je \emph{kvantifikátorový prefix}.
+
     Je-li $\varphi$ formule v PNF a jsou-li všechny kvantifikátory univerzální, potom říkáme, že $\varphi$ je \emph{univerzální} formule.
 \end{definition}
 
 Cílem této podsekce je ukázat následující tvrzení:
 
 \begin{proposition}[Převod do PNF]\label{proposition:convert-to-pnf}
-    Ke každé formuli $\varphi$ existuje ekvivalentní formule v prenexní normální formě.    
+    Ke každé formuli $\varphi$ existuje ekvivalentní formule v prenexní normální formě.
 \end{proposition}
 
 Algoritmus bude podobně jako převod do CNF založen na nahrazování podformulí \emph{ekvivalentními} podformulemi, s cílem posunout kvantifikátory blíže ke kořeni stromu formule. Co myslíme ekvivalencí formulí $\varphi\sim\varphi'$? To, že mají stejný význam, tj. v každém modelu a při každém ohodnocení proměnných mají touž pravdivostní hodnotu. Ekvivalentně, že platí $\models\varphi\liff\varphi'$. Budeme potřebovat následující jednoduché pozorování:
@@ -155,7 +155,7 @@ Převod je založen na opakovaném použití následujících syntaktických pra
     \end{align*}
 \end{lemma}
 \begin{proof}
-    Pravidla lze snadno ověřit sémanticky, nebo dokázat tablo metodou (v tom případě nejde-li o sentence, musíme je nahradit jejich generálními uzávěry).   
+    Pravidla lze snadno ověřit sémanticky, nebo dokázat tablo metodou (v tom případě nejde-li o sentence, musíme je nahradit jejich generálními uzávěry).
 \end{proof}
 
 Všimněte si, že v pravidle $(Qx)\varphi \limplies \psi\sim(\overline{Q}x)(\varphi \limplies \psi)$ pro vytýkání z \emph{antecendentu} implikace musíme změnit kvantifikátor (z $\forall$ na $\exists$ a naopak) zatímco při vytýkání z \emph{konsekventu} zůstává kvantifikátor stejný. Proč tomu tak je vidíme nejlépe pokud přepíšeme implikaci pomocí disjunkce a negace:
@@ -166,7 +166,7 @@ Všimněte si také předpokladu, že $x$ není volná v $\psi$. Bez něj by pra
 $$
 (\exists x)P(x)\land Q(x)\ \not\sim\ (\exists x)(P(x)\land Q(x))
 $$
-V takové situaci nahradíme formuli variantou, ve které přejmenujeme vázanou proměnnou $x$ na nějakou novou proměnnou: 
+V takové situaci nahradíme formuli variantou, ve které přejmenujeme vázanou proměnnou $x$ na nějakou novou proměnnou:
 $$
 (\exists x)P(x)\land Q(x)\ \sim\ (\exists y)P(y)\land Q(x) \sim (\exists y)(P(y)\land Q(x))
 $$
@@ -179,12 +179,12 @@ Ukažme si postup na jednom příkladě:
 \begin{example}\label{example:convert-to-pnf}
     Převeďme formuli $((\forall z)P(x,z)\land P(y,z))\ \limplies\ \neg(\exists x)P(x,y)$ do PNF. Zapíšeme jen jednotlivé mezikroky. Všimněte si, jaké pravidlo na jakou podformuli bylo použito (a také přejmenování proměnné v prvním kroku), a sledujte postup na stromu formule.
     \begin{align*}
-        &\ (\forall z)P(x,z)\land P(y,z)\ \limplies\ \neg(\exists x)P(x,y)\\ \sim &\ 
-        (\forall u) P(x,u)\land P(y,z)\ \limplies\ (\forall x)\neg P(x,y)\\ \sim &\ 
-        (\forall u)(P(x,u)\land P(y,z))\ \limplies\ (\forall v)\neg P(v,y)\\ \sim &\ 
-        (\exists u)( P(x,u)\land P(y,z)\ \limplies\ (\forall v)\neg P(v,y))\\ \sim &\ 
+        &\ (\forall z)P(x,z)\land P(y,z)\ \limplies\ \neg(\exists x)P(x,y)\\ \sim &\
+        (\forall u) P(x,u)\land P(y,z)\ \limplies\ (\forall x)\neg P(x,y)\\ \sim &\
+        (\forall u)(P(x,u)\land P(y,z))\ \limplies\ (\forall v)\neg P(v,y)\\ \sim &\
+        (\exists u)( P(x,u)\land P(y,z)\ \limplies\ (\forall v)\neg P(v,y))\\ \sim &\
         (\exists u)(\forall v)( P(x,u)\land P(y,z)\ \limplies\ \neg P(v,y))
-        \end{align*}    
+        \end{align*}
 \end{example}
 
 Nyní nám již nic nebrání dokázat Tvrzení \ref{proposition:convert-to-pnf}:
@@ -197,7 +197,7 @@ Protože je každá formule $\varphi(x_1,\dots,x_n)$ ekvivalentní svému \emph{
 
 \begin{corollary}
     Ke každé formuli $\varphi$ existuje ekvivalentní \emph{sentence} v PNF.
-\end{corollary} 
+\end{corollary}
 
 Například v Příkladě \ref{example:convert-to-pnf} je výsledná sentence $(\forall x)(\forall y)(\forall z)(\exists u)(\forall v)( P(x,u)\land P(y,z)\limplies\neg P(v,y))$.
 
@@ -209,12 +209,12 @@ Například v Příkladě \ref{example:convert-to-pnf} je výsledná sentence $(
 
 \subsection{Skolemova varianta}
 
-Nyní jsme převedli naše axiomy na ekvivalentní sentence v prenexním tvaru. Pokud by některá sentence obsahovala pouze univerzální kvantifikátory, tj. byla tvaru 
-$$(\forall x_1)\dots(\forall x_n)\varphi(x_1,\dots,x_n)$$ 
+Nyní jsme převedli naše axiomy na ekvivalentní sentence v prenexním tvaru. Pokud by některá sentence obsahovala pouze univerzální kvantifikátory, tj. byla tvaru
+$$(\forall x_1)\dots(\forall x_n)\varphi(x_1,\dots,x_n)$$
 kde $\varphi$ je otevřená, mohli bychom ji prostě nahradit jejím otevřeným jádrem $\varphi$, které je jí v tomto případě ekvivalentní. Jak si ale poradit s existenčními kvantifikátory, např. $(\exists x)\varphi(x)$, $(\forall x)(\exists y)\varphi(x,y)$, apod? Ty nejprve nahradíme jejich \emph{Skolemovou variantou}.
 
 \begin{definition}[Skolemova varianta]
-Mějme $L$-sentenci $\varphi$ v PNF, a nechť všechny její vázané proměnné jsou různé. Nechť existenční kvantifikátory z prefixu $\varphi$ jsou $(\exists y_1),\dots,(\exists y_n)$ (v tomto pořadí), a nechť pro každé $i$ jsou $(\forall x_1),\dots,(\forall x_{n_i})$ právě všechny univerzální kvantifikátory předcházející kvantifikátor $(\exists y_i)$ v prefixu $\varphi$. 
+Mějme $L$-sentenci $\varphi$ v PNF, a nechť všechny její vázané proměnné jsou různé. Nechť existenční kvantifikátory z prefixu $\varphi$ jsou $(\exists y_1),\dots,(\exists y_n)$ (v tomto pořadí), a nechť pro každé $i$ jsou $(\forall x_1),\dots,(\forall x_{n_i})$ právě všechny univerzální kvantifikátory předcházející kvantifikátor $(\exists y_i)$ v prefixu $\varphi$.
 
 Označme $L'$ rozšíření $L$ o \emph{nové} $n_i$-ární funkční symboly $f_1,\dots,f_n$, kde symbol $f_i$ je arity $n_i$, pro každé $i$. \emph{Skolemova varianta} sentence $\varphi$ je $L'$-sentence $\varphi_S$ vzniklá z $\varphi$ tak, že pro každé $i=1,\dots,n$:
 \begin{itemize}
@@ -225,7 +225,7 @@ Tomuto procesu říkáme také \emph{skolemizace}.
 \end{definition}
 
 \begin{example}
-    Skolemova varianta sentence 
+    Skolemova varianta sentence
     $$\varphi=(\exists y_1)(\forall x_1)(\forall x_2)(\exists y_2)(\forall x_3)R(y_1,x_1,x_2,y_2,x_3)$$
     je sentence
     $$
@@ -238,25 +238,25 @@ Tomuto procesu říkáme také \emph{skolemizace}.
     Nezapomeňte, že při skolemizaci musíme vycházet ze sentence! Například, máme-li formuli $(\exists y)E(x,y)$, \emph{není} $E(x,c)$ její Skolemova varianta. Musíme napřed provést generální uzávěr $(\forall x)(\exists y)E(x,y)$, a potom správně skolemizovat jako $(\forall x)E(x,f(x))$, což je ekvivalentní otevřené formuli $E(x,f(x))$ (která říká něco mnohem slabšího než $E(x,c)$).
 
     Je také důležité, aby každý symbol použitý při skolemizaci byl opravdu nový, jeho jedinou `rolí' v celé teorii musí být reprezentovat `existující' prvky v této formuli.
-\end{remark} 
+\end{remark}
 
 V následujícím lemmatu ukážeme klíčovou vlastnost skolemovy varianty:
 
 \begin{lemma}\label{lemma:skolem-variant-conservative-extension}
-Mějme $L$-sentenci $\varphi=(\forall x_1)\dots(\forall x_n)(\exists y)\psi$ a nechť $\varphi'$ je sentence 
+Mějme $L$-sentenci $\varphi=(\forall x_1)\dots(\forall x_n)(\exists y)\psi$ a nechť $\varphi'$ je sentence
 $$
 (\forall x_1)\dots(\forall x_n)\psi(y/f(x_1,\dots,x_n))$$
 kde $f$ je nový funkční symbol. Potom:
 \begin{enumerate}[(i)]
-    \item $L$-redukt každého modelu $\varphi'$ je modelem $\varphi$, a 
+    \item $L$-redukt každého modelu $\varphi'$ je modelem $\varphi$, a
     \item každý model $\varphi$ lze expandovat na model $\varphi'$.
 \end{enumerate}
 \end{lemma}
 
 \begin{proof}
     Nejprve dokažme část (i): Mějme model $\A'\models\varphi'$ a nechť $\A$ je jeho redukt na jazyk $L$. Pro každé ohodnocení proměnných $e$ platí $\A\models\psi[e(y/a)]$ pro $a=(f(x_1,\dots,x_n))^{\A'}[e]$, tedy $\A\models\varphi$.
-    
-    Nyní část (ii): Protože $\A\models\varphi$, existuje funkce $f^A:A^n\to A$ taková, že pro každé ohodnocení proměnných $e$ platí $\A\models \psi[e(y/a)]$, kde $a=f^A(e(x_1),\dots,e(x_n))$. To znamená, že expanze struktury $\A$ vzniklá přidáním funkce $f^A$ je modelem $\varphi'$.    
+
+    Nyní část (ii): Protože $\A\models\varphi$, existuje funkce $f^A:A^n\to A$ taková, že pro každé ohodnocení proměnných $e$ platí $\A\models \psi[e(y/a)]$, kde $a=f^A(e(x_1),\dots,e(x_n))$. To znamená, že expanze struktury $\A$ vzniklá přidáním funkce $f^A$ je modelem $\varphi'$.
 \end{proof}
 
 \begin{remark}
@@ -292,7 +292,7 @@ Otevřenou teorii už můžeme snadno převést do CNF (vyjádřit \emph{formul�
 
 \section{Grounding}\label{section:grounding}
 
-V této sekci si ukážeme, že máme-li otevřenou teorii, která je nesplnitelná, můžeme její nesplnitelnost doložit `na konkrétních prvcích'. Co tím myslíme? Existuje konečně mnoho \emph{základních (ground) instancí} axiomů (instancí, kde za proměnné substituujeme konstantní termy), takových, že jejich konjunkce (která neobsahuje žádnou proměnnou) je nesplnitelná. 
+V této sekci si ukážeme, že máme-li otevřenou teorii, která je nesplnitelná, můžeme její nesplnitelnost doložit `na konkrétních prvcích'. Co tím myslíme? Existuje konečně mnoho \emph{základních (ground) instancí} axiomů (instancí, kde za proměnné substituujeme konstantní termy), takových, že jejich konjunkce (která neobsahuje žádnou proměnnou) je nesplnitelná.
 
 \begin{definition}[Základní instance]
     Mějme otevřenou formuli $\varphi$ ve volných proměnných $x_1,\dots,x_n$. Řekneme, že instance $\varphi(x_1/t_1,\dots,x_n/t_n)$ je \emph{základní (ground) instance}, jsou-li všechny termy $t_1,\dots,t_n$ konstantní (ground).
@@ -312,16 +312,16 @@ Tomuto procesu převedení na základní instance (a tím do výrokové logiky) 
 
 \subsection{Přímá redukce do výrokové logiky}
 
-Uvědomme si nyní, že díky Herbrandově větě grounding umožňuje následující postup, byť neefektivní, jak zamítat formule rezolucí `na úrovni výrokové logiky': Ve vstupní formuli $S$ nahradíme každou klauzuli množinou všech jejích základních instancí (pokud žádné nejsou, tedy pokud jazyk neobsahuje konstantní symbol, jeden konstantní symbol do jazyka přidáme). Ve výsledné množině klauzulí $S'$ chápeme atomické sentence jako výrokové proměnné, a $S'$ zamítneme výrokovou rezolucí (o které víme, že je korektní a úplná). 
+Uvědomme si nyní, že díky Herbrandově větě grounding umožňuje následující postup, byť neefektivní, jak zamítat formule rezolucí `na úrovni výrokové logiky': Ve vstupní formuli $S$ nahradíme každou klauzuli množinou všech jejích základních instancí (pokud žádné nejsou, tedy pokud jazyk neobsahuje konstantní symbol, jeden konstantní symbol do jazyka přidáme). Ve výsledné množině klauzulí $S'$ chápeme atomické sentence jako výrokové proměnné, a $S'$ zamítneme výrokovou rezolucí (o které víme, že je korektní a úplná).
 
-Problémem tohoto přístupu je, že klauzulí v $S'$ (základních instancí klauzulí z $S$) může být mnoho, i nekonečně mnoho, např. kdykoliv je v jazyce alespoň jeden funkční (nekonstantní) symbol. 
+Problémem tohoto přístupu je, že klauzulí v $S'$ (základních instancí klauzulí z $S$) může být mnoho, i nekonečně mnoho, např. kdykoliv je v jazyce alespoň jeden funkční (nekonstantní) symbol.
 
 \begin{example}
 Máme-li CNF formuli $S=\{\{P(x,y),R(x,y)\},\{\neg P(c,y)\},\{\neg R(x,f(x))\}\}$ v jazyce $L=\langle f,c\rangle$, nahradíme ji následující nekonečnou formulí $S'$:
 \begin{align*}
-    S'=\{&\{P(c,c),R(c,c)\},\{P(c,f(c)),R(c,f(c))\},\{P(f(c),c),R(f(c),c)\},\dots,\\ 
+    S'=\{&\{P(c,c),R(c,c)\},\{P(c,f(c)),R(c,f(c))\},\{P(f(c),c),R(f(c),c)\},\dots,\\
     &\{\neg P(c,c)\}, \{\neg P(c,f(c))\},\{\neg P(c,f(f(c)))\},\{\neg P(c,f(f(f(c))))\}, \dots,\\
-    &\{\neg R(c,f(c))\}, \{\neg R(f(c),f(f(c)))\},\{\neg R(f(f(c)),f(f(f(c))))\},\dots\}    
+    &\{\neg R(c,f(c))\}, \{\neg R(f(c),f(f(c)))\},\{\neg R(f(f(c)),f(f(f(c))))\},\dots\}
 \end{align*}
 Ta je nesplnitelná, neboť obsahuje následující konečnou podmnožinu, která je nesplnitelná, což snadno ukážeme výrokovou rezolucí:
 $$
@@ -383,9 +383,9 @@ Máme-li jazyk s rovností, potom nejprve teorii $T$ rozšíříme o axiomy rovn
 Na závěr této sekce vyslovíme dva důsledky Herbrandovy věty.
 
 \begin{corollary}
-    Mějme otevřenou formuli $\varphi(x_1,\dots,x_n)$ v jazyce $L$ s alespoň jedním konstantním symbolem. Potom existují konstantní $L$-termy $t_{ij}$ ($1\leq i\leq m,1\leq j\leq n$) takové, že sentence 
+    Mějme otevřenou formuli $\varphi(x_1,\dots,x_n)$ v jazyce $L$ s alespoň jedním konstantním symbolem. Potom existují konstantní $L$-termy $t_{ij}$ ($1\leq i\leq m,1\leq j\leq n$) takové, že sentence
     $$
-    (\exists x_1)\dots(\exists x_n)\varphi(x_1,\dots,x_n)$$ 
+    (\exists x_1)\dots(\exists x_n)\varphi(x_1,\dots,x_n)$$
     je pravdivá, právě když je následující formule (výroková) tautologie:
     $$
     \varphi(x_1/t_{11},\dots,x_n/t_{1n})\lor \dots \lor \varphi(x_1/t_{m1},\dots,x_n/t_{mn})
@@ -405,7 +405,7 @@ V modelu teorie $T$ platí všechny axiomy, tedy i všechny základní instance 
 
 \section{Unifikace}\label{section:unification}
 
-Místo substitucí \emph{všech} základních termů a práce s touto novou, obrovskou a typicky nekonečnou množinou klauzulí, je lepší najít v konkrétním rezolučním kroku `vhodnou' substituci a pracovat jen s ní. V této sekci vysvětlíme, co znamená `vhodná' (tzv. \emph{unifikace}) a jak ji lze hledat (pomocí \emph{unifikačního 
+Místo substitucí \emph{všech} základních termů a práce s touto novou, obrovskou a typicky nekonečnou množinou klauzulí, je lepší najít v konkrétním rezolučním kroku `vhodnou' substituci a pracovat jen s ní. V této sekci vysvětlíme, co znamená `vhodná' (tzv. \emph{unifikace}) a jak ji lze hledat (pomocí \emph{unifikačního
 algoritmu}).
 
 \subsection{Substituce}
@@ -418,15 +418,15 @@ Nejprve uveďme několik příkladů `vhodných' substitucí:
     \item Z klauzulí $\{P(x),Q(x,a)\}$ a $\{\neg P(y),\neg Q(b,y)\}$ získáme pomocí substituce $\{x/b,y/a\}$ klauzule $\{P(b),Q(b,a)\}$ a $\{\neg P(a),\neg Q(b,a)\}$, a z nich potom rezolucí klauzuli $\{P(b),\neg P(a)\}$. Mohli bychom také použít substituci $\{x/y\}$ a rezolucí přes $P(y)$ získat rezolventu $\{Q(y,a),\neg Q(b,y)\}$.
     \item Máme-li klauzule $\{P(x),Q(x,a),Q(b,y)\}$ a $\{\neg P(v),\neg Q(u,v)\}$, vhodnou substitucí je $\{x/b,y/a,u/b,v/a\}$; dostáváme $\{P(b),Q(b,a)\}$ a $\{\neg P(a),\neg Q(b,a)\}$, jejichž rezolventou je $\{P(b),\neg P(a)\}$.
     \item Podívejme se ještě na klauzule $\{P(x),Q(x,z)\}$ a $\{\neg P(y),\neg Q(f(y),y)\}$. Mohli bychom použít substituci $\{x/f(a),y/a,z/a\}$ a získat tak dvojici klauzulí $\{P(f(a)),Q(f(a),a)\}$ a $\{\neg P(a),\neg Q(f(a),a)\}$, rezolucí potom $\{P(f(a)),\neg P(a)\}$.
-    
+
     Lepší ale bude využít substituce $\{x/f(z),y/z\}$, po které máme $\{P(f(z)),Q(f(z),z)\}$ a $\{\neg P(z),\neg Q(f(z),z)\}$, a rezolventu $\{P(f(z)),\neg P(z)\}$. Tato substituce je \emph{obecnější}, a výsledná rezolventa `říká více' než $\{P(f(a)),\neg P(a)\}$ (ta je jejím důsledkem, ale naopak to neplatí).
 \end{itemize}
 \end{example}
 
-Nyní zavedeme potřebnou terminologii týkající se substitucí. Substituce budeme aplikovat na termy nebo na literály (atomické formule nebo jejich negace), označme tyto dohromady jako \emph{výrazy}. 
+Nyní zavedeme potřebnou terminologii týkající se substitucí. Substituce budeme aplikovat na termy nebo na literály (atomické formule nebo jejich negace), označme tyto dohromady jako \emph{výrazy}.
 
 \begin{definition}[Substituce]
-    \emph{Substituce} je konečná množina $\sigma=\{x_1/t_1,\dots,x_n/t_n\}$, kde $x_i$ jsou navzájem různé proměnné a $t_i$ jsou termy, přičemž vyžadujeme, aby term $t_i$ nebyl roven proměnné $x_i$. Substituce $\sigma$ je 
+    \emph{Substituce} je konečná množina $\sigma=\{x_1/t_1,\dots,x_n/t_n\}$, kde $x_i$ jsou navzájem různé proměnné a $t_i$ jsou termy, přičemž vyžadujeme, aby term $t_i$ nebyl roven proměnné $x_i$. Substituce $\sigma$ je
     \begin{itemize}
         \item \emph{základní}, jsou-li všechny termy $t_i$ konstantní,
         \item \emph{přejmenování proměnných}, jsou-li všechny termy $t_i$ navzájem různé proměnné.
@@ -451,7 +451,7 @@ Substituce můžeme přirozeně \emph{skládat}. Složení substitucí $\sigma$ 
         \tau&=\{x/a,y/g(x),v/w,u/c\}
     \end{align*}
     potom je $E\sigma=P(f(y),v,u)$ a $(E\sigma)\tau=P(f(g(x)),w,c)$.
-    Musí tedy platit: 
+    Musí tedy platit:
     $$
     \sigma\tau=\{x/f(g(x)),y/g(x),v/w,u/c\}
     $$
@@ -470,7 +470,7 @@ kde $X=\{x_1,\dots,x_n\}$ a $Y=\{y_1,\dots,y_m\}$.
 Všimněte si, že skládání substitucí není komutativní, $\sigma\tau$ je typicky zcela jiná substituce než $\tau\sigma$.
 
 \begin{example}
-    Jsou-li $\sigma$ a $\tau$ jako v Příkladu \ref{example:compose-substitutions}, potom: 
+    Jsou-li $\sigma$ a $\tau$ jako v Příkladu \ref{example:compose-substitutions}, potom:
     $$
     \tau\sigma=\{x/a,y/g(f(y)),u/c,w/v\}\neq \sigma\tau
     $$
@@ -498,15 +498,15 @@ $$
 E((\sigma\tau)\varrho)=(E(\sigma\tau))\varrho=((E\sigma)\tau)\varrho=(E\sigma)(\tau\varrho)=E(\sigma(\tau\varrho)).
 $$
 Z toho plyne, že $(\sigma\tau)\varrho$ a $\sigma(\tau\varrho)$ jsou touž substitucí.\footnote{Podrobněji: používáme zřejmou vlastnost, že pro substituci $\pi$ platí $\pi=\{z_1/v_1,\dots,z_k/v_k\}$, právě když $E\pi=v_i$ pro $E=z_i$  a $E\pi=E$ je-li $E$ proměnná různá od všech $z_i$.}
-\end{proof}    
+\end{proof}
 
 \subsection{Unifikační algoritmus}
 
 Které substituce jsou tedy `vhodné'? Takové, po jejichž provedení se dané výrazy `stanou stejnými', tj. \emph{unifikovanými} (viz Příklad \ref{example:substitutions}).
 
 \begin{definition}[Unifikace]
-    Mějme konečnou množinu výrazů $S=\{E_1,\dots,E_n\}$. Substituce $\sigma$ je \emph{unifikace pro $S$}, pokud $E_1\sigma=E_2\sigma=\cdots =E_n\sigma$, neboli $S\sigma$ obsahuje jediný výraz. Pokud existuje, potom říkáme také, že $S$ je \emph{unifikovatelná}. 
-    
+    Mějme konečnou množinu výrazů $S=\{E_1,\dots,E_n\}$. Substituce $\sigma$ je \emph{unifikace pro $S$}, pokud $E_1\sigma=E_2\sigma=\cdots =E_n\sigma$, neboli $S\sigma$ obsahuje jediný výraz. Pokud existuje, potom říkáme také, že $S$ je \emph{unifikovatelná}.
+
     Unifikace pro $S$ je \emph{nejobecnější}, pokud pro každou unifikaci $\tau$ pro $S$ existuje substituce $\lambda$ taková, že $\tau=\sigma\lambda$. Všimněte si, že nejobecnějších unifikací pro $S$ může být více, ale liší se jen přejmenováním proměnných.
 \end{definition}
 
@@ -519,7 +519,7 @@ Nyní představíme \emph{unifikační algoritmus}. Jeho vstupem je neprázdná,
 Nechť $p$ je první (nejlevější) pozice, na které se nějaké dva výrazy z $S$ liší. Potom \emph{neshoda v $S$}, označme $D(S)$, je množina všech podvýrazů začínajících na pozici $p$ výrazů z $S$.
 
 \begin{example}
-Pro $S=\{P(x,y),P(f(x),z),P(z,f(x))\}$ je $p=3$ a $D(S)=\{x,f(x),z\}$.  
+Pro $S=\{P(x,y),P(f(x),z),P(z,f(x))\}$ je $p=3$ a $D(S)=\{x,f(x),z\}$.
 \end{example}
 
 \begin{algorithm}[Unifikační algoritmus]{\,}
@@ -543,33 +543,33 @@ Pro $S=\{P(x,y),P(f(x),z),P(z,f(x))\}$ je $p=3$ a $D(S)=\{x,f(x),z\}$.
 Než se pustíme do důkazu korektnosti, ukážeme si běh algoritmu na příkladě
 
 \begin{example}
-Aplikujme unifikační algoritmus na následující množinu: 
+Aplikujme unifikační algoritmus na následující množinu:
 $$
 S=\{P(f(y,g(z)),h(b)),\ P(f(h(w),g(a)),t),\ P(f(h(b),g(z)),y)\}
 $$
 \begin{itemize}
     \item[($k=0$)] Množina $S_0=S$ není jednoprvková, $D(S_0)=\{y,h(w),h(b)\}$ obsahuje term $h(w)$ a proměnnou $y$ nevyskytující se v $h(w)$. Nastavíme $\sigma_1=\{y/h(w)\}$ a $S_1=S_0\sigma_1$, tj. máme:
-    
+
     $$S_1=\{P(f(h(w),g(z)),h(b)),\ P(f(h(w),g(a)),t),\ P(f(h(b),g(z)),h(w))\}$$
 
     \item[($k=1$)] $D(S_1)=\{w,b\}$, $\sigma_2=\{w/b\}$, $S_2=S_1\sigma_2$, tj.
-    
+
     $$S_2=\{P(f(h(b),g(z)),h(b)),\ P(f(h(b),g(a)),t)\}$$
-        
+
     \item[($k=2$)] $D(S_2)=\{z,a\}$, $\sigma_3=\{z/a\}$, $S_3=S_2\sigma_3$, tj.
-    
+
     $$S_3=\{P(f(h(b),g(a)),h(b)),\ P(f(h(b),g(a)),t)\}$$
 
     \item[($k=3$)] $D(S_3)=\{h(b),t\}$, $\sigma_4=\{t/h(b)\}$, $S_4=S_3\sigma_4$, tj.
-    
+
     $$S_4=\{P(f(h(b),g(a)),h(b))\}$$
 
     \item[($k=4$)] $S_4$ je jednoprvková, nejobecnější unifikace pro $S$ je následující:
-    
+
     $$
     \sigma=\sigma_1\sigma_2\sigma_3\sigma_4=\{y/h(w)\}\{w/b\}\{z/a\}\{t/h(b)\}=\{y/h(b),w/b,z/a,t/h(b)\}
     $$
-\end{itemize}     
+\end{itemize}
 \end{example}
 
 \begin{proposition}\label{proposition:unification-algorithm}
@@ -586,7 +586,7 @@ Mějme libovolnou unifikaci $\tau$ pro $S$. Ukážeme indukcí, že pro každé 
 $$
 \tau=\sigma_0\sigma_1\cdots\sigma_i\tau
 $$
-Pro $i=0$ je $\sigma_0=\emptyset$ a $\tau=\sigma_0\tau$ tedy platí triviálně. Předpokládejme, že to platí pro nějaké $i$, a dokažme pro $i+1$. Nechť $\sigma_{i+1}=\{x/t\}$. Stačí dokázat, že pro libovolnou proměnnou $u$ platí: 
+Pro $i=0$ je $\sigma_0=\emptyset$ a $\tau=\sigma_0\tau$ tedy platí triviálně. Předpokládejme, že to platí pro nějaké $i$, a dokažme pro $i+1$. Nechť $\sigma_{i+1}=\{x/t\}$. Stačí dokázat, že pro libovolnou proměnnou $u$ platí:
 $$
 u\sigma_{i+1}\tau=u\tau
 $$
@@ -634,7 +634,7 @@ Jakmile máme definované rezoluční pravidlo, můžeme zavést \emph{rezolučn
 
 \begin{definition}[Rezoluční důkaz]
     \emph{Rezoluční důkaz (odvození)} klauzule $C$ z formule $S$ je \emph{konečná} posloupnost klauzulí $C_0,C_1,\dots,C_n=C$
-    taková, že pro každé $i$ je 
+    taková, že pro každé $i$ je
     \begin{itemize}
         \item buď $C_i=C_i'\sigma$ pro nějakou klauzuli $C'_i\in S$ a přejmenování proměnných $\sigma$, nebo
         \item $C_i$ je rezolventou nějakých $C_j,C_k$ kde $j<i$ a $k<i$.
@@ -661,7 +661,7 @@ Ukážeme, že $S\proves_R\square$. Rezolučním důkazem je například násled
     \{P(f(x'),x')\},
     \{P(x,x)\},
     \{P(x',x')\},
-    \square   
+    \square
 \end{align*}
 Názornější je ale rezoluční strom, který je znázorněný na Obrázku \ref{figure:resolution-tree-example}.
 \end{example}
@@ -675,11 +675,11 @@ Názornější je ale rezoluční strom, který je znázorněný na Obrázku \re
         [{$ \{P(x,x)\} $}, label=left:{\footnotesize\textcolor{blue}{$z/x,x'/x$}}
             [{$ \{P(f(x'),x')\} $}, label=right:{\footnotesize\textcolor{blue}{$x/x',y/f(x')$}}
                 [{$ \{P(x',f(x'))\} $}]
-                [{$ \{\neg P(x,y),P(y,x)\} $}]            
+                [{$ \{\neg P(x,y),P(y,x)\} $}]
             ]
             [{$ \{\neg P(f(x),z),P(x,z)\} $}, label=left:{\footnotesize\textcolor{blue}{$y/f(x'),x'/x$}}
                 [{$ \{P(x',f(x'))\} $}]
-                [{$ \{\neg P(x,y),\neg P(y,z), P(x,z) \} $}]                
+                [{$ \{\neg P(x,y),\neg P(y,z), P(x,z) \} $}]
             ]
         ]
     ]
@@ -723,7 +723,7 @@ Znění i důkaz Věty o korektnosti jsou nyní stejné jako ve výrokové logic
 
 Větu o úplnosti rezoluce v predikátové logice, totiž že nesplnitelné formule lze zamítnout rezolucí, dokážeme převedením na případ výrokové logiky. Ukážeme, že rezoluční důkaz `na úrovni výrokové logiky' je možné `zvednout' (`lift') na úroveň predikátové logiky.
 
-Klíčem je následující lemma, které zaručuje takové `zvednutí' v jednom rezolučním kroku. Jeho důkaz je poněkud technický. 
+Klíčem je následující lemma, které zaručuje takové `zvednutí' v jednom rezolučním kroku. Jeho důkaz je poněkud technický.
 
 \begin{lemma}[Lifting lemma]\label{lemma:lifting-lemma}
 Mějme klauzule $C_1$ a $C_2$ s disjunktními množinami proměnných. Jsou-li $C^*_1$ a $C^*_2$ základní instance klauzulí $C_1$ a $C_2$ a je-li $C^*$ je rezolventou $C^*_1$ a $C^*_2$, potom existuje rezolventa $C$ klauzulí $C_1$ a $C_2$ taková, že $C^*$ je základní instancí $C$.
@@ -786,10 +786,10 @@ V této sekci připomeneme pojmy \emph{lineárního a linear-input důkazu}, \em
     kde $C_i$ říkáme \emph{centrální} klauzule, $C_0$ je \emph{počáteční}, $C_{n+1}=C$ je \emph{koncová}, $B_i$ jsou \emph{boční} klauzule, a platí:
     \begin{itemize}
         \item $C_0$ je varianta klauzule z $S$, pro $i\leq n$ je $C_{i+1}$ rezolventou $C_i$ a $B_i$,
-        \item $B_0$ je varianta klauzule z $S$, pro $i\leq n$ je $B_i$ varianta klauzule z $S$ nebo $B_i=C_j$ pro nějaké $j<i$. 
+        \item $B_0$ je varianta klauzule z $S$, pro $i\leq n$ je $B_i$ varianta klauzule z $S$ nebo $B_i=C_j$ pro nějaké $j<i$.
     \end{itemize}
     \emph{Lineární zamítnutí} $S$ je lineární důkaz $\square$ z $S$.
-    
+
     \emph{LI-důkaz} je lineární důkaz, ve kterém je každá boční klauzule $B_i$ variantou klauzule z $S$. Pokud existuje LI-důkaz, říkáme, že je $C$ \emph{LI-dokazatelná} z $S$, a píšeme $S\proves_{LI}C$. Pokud $S\proves_{LI}\square$, je $S$ \emph{LI-zamítnutelná}.
 \end{definition}
 
@@ -810,7 +810,7 @@ Připomeňme terminologii týkající se hornovskosti a programů: \emph{Hornova
 Stejně jako ve výrokové logice, LI-rezoluce je úplná pro Hornovské formule:
 
 \begin{theorem}[O úplnosti LI-rezoluce pro Hornovy formule]\label{theorem:completeness-of-li-resolution-for-horn-predicate}
-Je-li Hornova formule $T$ splnitelná, a $T\cup\{G\}$ je nesplnitelná pro cíl $G$, potom $T\cup\{G\}\proves_{LI}\square$, a to LI-zamítnutím, které začíná cílem $G$.   
+Je-li Hornova formule $T$ splnitelná, a $T\cup\{G\}$ je nesplnitelná pro cíl $G$, potom $T\cup\{G\}\proves_{LI}\square$, a to LI-zamítnutím, které začíná cílem $G$.
 \end{theorem}
 \begin{proof}
     Plyne z analogické věty ve výrokové logice, z Herbrandovy věty, a z Lifting lemmatu.
@@ -825,10 +825,10 @@ Na závěr si ukážeme aplikaci LI-rezoluce v programovacím jazyce Prolog. \em
 \begin{example}\label{example:predicate-prolog-program}
 Jako příklad vezměme jednoduchý program popisující rodinné vztah třech osob, popsaný v Tabulce \ref{table:predicate-prolog-program}. Na levé straně vidíme syntaxi Prologu, a vpravo je množinový zápis odpovídajících klauzulí; příslušnou CNF formuli označíme $P$.
 
-\begin{table}[h]\centering   
+\begin{table}[h]\centering
     \begin{tabular}{lr}
-        \texttt{son(X,Y):-father(Y,X),man(X).} 
-        & 
+        \texttt{son(X,Y):-father(Y,X),man(X).}
+        &
         $\{son(X,Y),\neg father(Y,X),\neg man(X)\}$
         \\
         \texttt{son(X,Y):-mother(Y,X),man(X).}
@@ -843,7 +843,7 @@ Jako příklad vezměme jednoduchý program popisující rodinné vztah třech o
         &
         $\{father(bob,charlie)\}$
         \\
-        \texttt{mother(alice,charlie).} 
+        \texttt{mother(alice,charlie).}
         &
         $\{mother(alice,charlie)\}$
         \\
@@ -853,11 +853,11 @@ Jako příklad vezměme jednoduchý program popisující rodinné vztah třech o
         $\{\neg son(charlie,X)\}$
     \end{tabular}
     \label{table:predicate-prolog-program}
-    \caption{Ukázkový program v Prologu}    
-\end{table} 
+    \caption{Ukázkový program v Prologu}
+\end{table}
 
 Poslední řádek v tabulce není součástí programu, jde o \emph{existenční dotaz}. Zajímá nás, zda v programu platí:
-$P\models(\exists X)son(charlie,X)$? Všimněte si, že negací dotazu získáme \emph{cíl} $G=\{\neg son(charlie,X)\}$. Chceme tedy \emph{zamítnout} CNF formuli $P\cup\{G\}$. 
+$P\models(\exists X)son(charlie,X)$? Všimněte si, že negací dotazu získáme \emph{cíl} $G=\{\neg son(charlie,X)\}$. Chceme tedy \emph{zamítnout} CNF formuli $P\cup\{G\}$.
 \end{example}
 
 Stejně jako ve výrokové logice (Důsledek \ref{corollary:propositional-prolog}) platí následující jednoduchý důsledek úplnosti LI-rezoluce pro Hornovy formule.
@@ -879,7 +879,7 @@ Je-li odpověď na dotaz kladná, chceme znát i \emph{výstupní substituci} $\
     $$
 
 \begin{example}
-Pokračujme v Příkladu \ref{example:predicate-prolog-program}. Najdeme všechny výstupní substituce pro náš dotaz: 
+Pokračujme v Příkladu \ref{example:predicate-prolog-program}. Najdeme všechny výstupní substituce pro náš dotaz:
 
 \medskip
 
@@ -907,7 +907,7 @@ Záleží na tom, které ze dvou pravidel aplikujeme na cíl. Příslušná zam�
                     [{\textcolor{red}{\{\neg son(c,X)\}}}]
                     [{\{son(X',Y'),\neg father(Y',X'),\neg man(X')\}}, label=below:{\textcolor{blue}{$\{X'/c,Y'/X\}$}}]
                 ]
-                [{\{man(c)\}}, label=below:{\textcolor{blue}{$\emptyset$}}]                    
+                [{\{man(c)\}}, label=below:{\textcolor{blue}{$\emptyset$}}]
             ]
             [{\{father(b,c)\}}, label=below:{\textcolor{blue}{$\{X/b\}$}}]
         ]
@@ -926,13 +926,13 @@ Záleží na tom, které ze dvou pravidel aplikujeme na cíl. Příslušná zam�
                     [{\textcolor{red}{\{\neg son(c,X)\}}}]
                     [{\{son(X',Y'),\neg mother(Y',X'),\neg man(X')\}}, label=below:{\textcolor{blue}{$\{X'/c,Y'/X\}$}}]
                 ]
-                [{\{man(c)\}}, label=below:{\textcolor{blue}{$\emptyset$}}]                    
+                [{\{man(c)\}}, label=below:{\textcolor{blue}{$\emptyset$}}]
             ]
             [{\{mother(a,c)\}}, label=below:{\textcolor{blue}{$\{X/a\}$}}]
         ]
     \end{forest}
 \end{enumerate}
-    
+
 \end{example}
 
 

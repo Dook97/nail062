@@ -23,7 +23,7 @@ V této sekci tablo metodu v predikátové logice neformálně představíme. K 
                                 [\T P(c_0), tikz={\node[fit to=tree,label=below:$\otimes$] {};}]
                             ]
                         ]
-                    ]                
+                    ]
                 ]
             ]
         ]
@@ -44,7 +44,7 @@ V této sekci tablo metodu v predikátové logice neformálně představíme. K 
                                 [\T P(c_0), tikz={\node[fit to=tree,label=below:$\otimes$] {};}]
                             ]
                         ]
-                    ]                
+                    ]
                 ]
             ]
         ]
@@ -64,11 +64,11 @@ Formule v položkách musí být vždy \emph{sentence}, neboť potřebujeme, aby
 Redukce položek funguje stejně, použijeme tatáž atomická tabla pro logické spojky (viz Tabulka \ref{table:atomic-tableaux}, kde místo výroků jsou $\varphi,\psi$ sentence). Musíme ale přidat 4 nová atomická tabla pro $\mathrm T/\mathrm F$ a univerzální/existenční kvantifikátor. Tyto položky dělíme na dva typy:
 \begin{itemize}
     \item typ ``\emph{svědek}'': položky tvaru $\mathrm{T}(\exists x)\varphi(x)$ a $\mathrm{F}(\forall x)\varphi(x)$
-    \item typ ``\emph{všichni}'': položky tvaru $\mathrm{T}(\forall x)\varphi(x)$ a $\mathrm{F}(\exists x)\varphi(x)$    
+    \item typ ``\emph{všichni}'': položky tvaru $\mathrm{T}(\forall x)\varphi(x)$ a $\mathrm{F}(\exists x)\varphi(x)$
 \end{itemize}
 Příklady vidíme v tablech na Obrázku \ref{figure:predicate-tableau-intro-examples} (`svědci' jsou červeně, `všichni' modře).
 
-Kvantifikátor nemůžeme pouze odstranit, neboť výsledná formule $\varphi(x)$ by nebyla sentencí. Místo toho současně s odstraněním kvantifikátoru \emph{substituujeme} za $x$ nějaký \emph{konstantní term}, v nové položce tedy bude \emph{sentence} $\varphi(x/t)$. Jaký konstantní term $t$ substituujeme záleží na tom, zda jde o položku typu ``svědek'' nebo ``všichni''. 
+Kvantifikátor nemůžeme pouze odstranit, neboť výsledná formule $\varphi(x)$ by nebyla sentencí. Místo toho současně s odstraněním kvantifikátoru \emph{substituujeme} za $x$ nějaký \emph{konstantní term}, v nové položce tedy bude \emph{sentence} $\varphi(x/t)$. Jaký konstantní term $t$ substituujeme záleží na tom, zda jde o položku typu ``svědek'' nebo ``všichni''.
 
 \subsubsection{Pomocné konstantní symboly}
 Jazyk $L$ teorie $T$, ve které dokazujeme, rozšíříme o spočetně mnoho \emph{nových (pomocných) konstantních symbolů} $C=\{c_0,c_1,c_2,\dots\}$ (ale budeme psát i $c,d,\dots$), výsledný rozšířený jazyk označíme $L_C$. Konstantní termy v jazyce $L_C$ tedy existují, i pokud původní jazyk $L$ nemá žádné konstanty. A vždy při konstrukci tabla máme k dispozici nějaký \emph{nový}, dosud \emph{nepoužitý} (ani v teorii, ani v konstruovaném tablu) pomocný konstantní symbol $c\in C$.
@@ -79,7 +79,7 @@ Při redukci položky typu ``svědek'' substituujeme za proměnnou jeden z těch
 Na Obrázku \ref{figure:predicate-tableau-intro-examples} vidíme příklad: položka $\T(\exists x)\neg P(x)$ v levém tablu je redukovaná, její redukcí vznikla položka $\T\neg P(c_0)$; $c_0\in C$ je pomocný symbol, na větvi se dosud nevyskytoval (a je první takový). Podobně pro položku $\F(\forall x)P(x)$ a $\F P(c_0)$ v pravém tablu.
 
 \subsubsection{Všichni}
-Při redukci položky typu ``všichni'' substituujeme za proměnnou $x$ libovolný \emph{konstantní term} $t$ rozšířeného jazyka $L_C$. Z položky tvaru $\T(\forall x)\varphi(x)$ tedy získáme položku $\T\varphi(x/t)$. 
+Při redukci položky typu ``všichni'' substituujeme za proměnnou $x$ libovolný \emph{konstantní term} $t$ rozšířeného jazyka $L_C$. Z položky tvaru $\T(\forall x)\varphi(x)$ tedy získáme položku $\T\varphi(x/t)$.
 
 Aby byla bezesporná větev \emph{dokončená}, budou na ní ale muset být položky $\T\varphi(x/t)$ pro \emph{všechny} konstantní $L_C$-termy $t$. (Musíme `použít' vše, co položka $\T(\forall x)\varphi(x)$ `říká'.) A stejně pro položku tvary $\mathrm{F}(\exists x)\varphi(x)$.
 
@@ -93,11 +93,11 @@ Tento poněkud technický přístup k definici \emph{redukovanosti} (výskytů) 
 
 Nadále budeme předpokládat, že jazyk $L$ je \emph{spočetný}.\footnote{Z hlediska výpočetní logiky to není velké omezení.} Z toho plyne, že každá $L$-teorie $T$ má jen spočetně mnoho axiomů, a také že konstantních termů v jazyce $L_C$ je jen spočetně mnoho. Toto omezení potřebujeme, neboť každé, i nekonečné tablo má jen spočetně mnoho položek, a musíme být schopni použít všechny axiomy dané teorie, a substituovat všechny konstantní termy jazyka $L_C$.
 
-Nejprve také budeme předpokládat, že jde o jazyk \emph{bez rovnosti}, což je jednodušší. Problémem je, že \emph{tablo} je čistě syntaktický objekt, ale \emph{rovnost} má speciální sémantický význam, totiž musí být v každém modelu interpretována relací identity. Jak adaptovat metodu pro jazyky s rovností si ukážeme později. 
+Nejprve také budeme předpokládat, že jde o jazyk \emph{bez rovnosti}, což je jednodušší. Problémem je, že \emph{tablo} je čistě syntaktický objekt, ale \emph{rovnost} má speciální sémantický význam, totiž musí být v každém modelu interpretována relací identity. Jak adaptovat metodu pro jazyky s rovností si ukážeme později.
 
 \section{Formální definice}
 
-V této sekci definujeme všechny pojmy potřebné pro tablo metodu pro jazyky bez rovnosti. K jazykům s rovností se vrátíme v Sekci \ref{section:tableaux-equality}. 
+V této sekci definujeme všechny pojmy potřebné pro tablo metodu pro jazyky bez rovnosti. K jazykům s rovností se vrátíme v Sekci \ref{section:tableaux-equality}.
 
 Buď $L$ \emph{spočetný} jazyk bez rovnosti. Označme jako $L_C$ rozšíření jazyka $L$ o spočetně mnoho nových \emph{pomocných} konstantních symbolů $C=\{c_i\mid i\in \mathbb N\}$. Zvolme nějaké očíslování konstantních termů jazyka $L_C$, označme tyto termy $\{t_i\mid i\in\mathbb N\}$.
 
@@ -114,15 +114,15 @@ Mějme nějakou $L$-teorii $T$ a $L$-sentenci $\varphi$.
 \begin{tabular}{@{}c||c|c|c|c|c@{}}
  & $\neg$ & $\land$ & $\lor$ & $\limplies$ & $\liff$  \\ \midrule \midrule
 True
-&  
+&
 \begin{forest}
 [$\mathrm{T}\neg\varphi$ [$\mathrm{F}\varphi$]]
 \end{forest}
-&  
+&
 \begin{forest}
 [$\mathrm{T}\varphi\land\psi$ [$\mathrm{T}\varphi$ [$\mathrm{T}\psi$]]]
 \end{forest}
-& 
+&
 \begin{forest}
 [$\mathrm{T}\varphi\lor\psi$ [$\mathrm{T}\varphi$] [$\mathrm{T}\psi$]]
 \end{forest}
@@ -130,13 +130,13 @@ True
 \begin{forest}
 [$\mathrm{T}\varphi\limplies\psi$ [$\mathrm{F}\varphi$] [$\mathrm{T}\psi$]]
 \end{forest}
-&  
+&
 \begin{forest}
 [$\mathrm{T}\varphi\liff\psi$ [$\mathrm{T}\varphi$ [$\mathrm{T}\psi$]] [$\mathrm{F}\varphi$ [$\mathrm{F}\psi$]]]
 \end{forest}
 \\ \midrule
-False 
-& 
+False
+&
 \begin{forest}
 [$\mathrm{F}\neg\varphi$ [$\mathrm{T}\varphi$]]
 \end{forest}
@@ -167,24 +167,24 @@ False
     \begin{tabular}{@{}c||c|c@{}}
      & $\forall$ & $\exists$ \\ \midrule \midrule
     True
-    &  
+    &
     \begin{forest}
         [$\T(\forall x)\varphi(x)$ [$\T\varphi(x/t_i)$]]
     \end{forest}
-    &  
+    &
     \begin{forest}
         [$\T(\exists x)\varphi(x)$ [$\T\varphi(x/c_i)$]]
     \end{forest}
     \\ \midrule
-    False 
-    &  
+    False
+    &
     \begin{forest}
         [$\F(\forall x)\varphi(x)$ [$\F\varphi(x/c_i)$]]
     \end{forest}
-    &  
+    &
     \begin{forest}
         [$\F(\exists x)\varphi(x)$ [$\F\varphi(x/t_i)$]]
-    \end{forest} 
+    \end{forest}
     \end{tabular}
     \caption{Atomická tabla pro kvantifikátory; $\varphi$ je $L_C$-sentence, $x$ proměnná, $t_i$ libovolný konstantní $L_C$-term, $c_i\in C$ je nový pomocný konstantní symbol (který se dosud nevyskytuje na dané větvi konstruovaného tabla).}
     \label{table:predicate-atomic-tableaux-quantifiers}
@@ -202,10 +202,10 @@ Definice v této části jsou téměř identické odpovídajícím definicím z 
         \item na konec libovolné větve můžeme připojit položku $\mathrm{T}\alpha$ pro libovolný axiom teorie $\alpha\in T$.
     \end{itemize}
     \emph{Tablo z teorie $T$} je buď konečné, nebo i \emph{nekonečné}: v tom případě vzniklo ve spočetně mnoha krocích. Můžeme ho formálně vyjádřit jako sjednocení $\tau=\bigcup_{i\geq 0}\tau_i$, kde $\tau_i$ jsou konečná tabla z $T$, $\tau_0$ je jednoprvkové tablo, a $\tau_{i+1}$ vzniklo z $\tau_i$ v jednom kroku.\footnote{Sjednocení proto, že v jednotlivých krocích přidáváme do tabla nové vrcholy, $\tau_i$ je tedy podstromem $\tau_{i+1}$.}
-    
+
     Tablo \emph{pro položku $P$} je tablo, které má položku $P$ v kořeni.
     \end{definition}
-    
+
     Připomeňme konvenci, že pokud $P$ \emph{není} typu `všichni', potom kořen atomického tabla nebudeme zapisovat (neboť vrchol s položkou $P$ už v tablu je).
 
 \begin{exercise}
@@ -214,18 +214,18 @@ Definice v této části jsou téměř identické odpovídajícím definicím z 
 
 
 \begin{definition}[Tablo důkaz]
-    \emph{Tablo důkaz} sentence $\varphi$ z teorie $T$ je \emph{sporné} tablo z teorie $T$ s položkou $\mathrm{F}\varphi$ v kořeni. Pokud existuje, je $\varphi$ \emph{(tablo) dokazatelná} z $T$, píšeme $T\proves\varphi$. (Definujme také \emph{tablo zamítnutí} jako sporné tablo s $\mathrm{T}\varphi$ v kořeni. Pokud existuje, je $\varphi$ \emph{(tablo) zamítnutelná} z $T$, tj. platí $T\proves\neg\varphi$.)  
+    \emph{Tablo důkaz} sentence $\varphi$ z teorie $T$ je \emph{sporné} tablo z teorie $T$ s položkou $\mathrm{F}\varphi$ v kořeni. Pokud existuje, je $\varphi$ \emph{(tablo) dokazatelná} z $T$, píšeme $T\proves\varphi$. (Definujme také \emph{tablo zamítnutí} jako sporné tablo s $\mathrm{T}\varphi$ v kořeni. Pokud existuje, je $\varphi$ \emph{(tablo) zamítnutelná} z $T$, tj. platí $T\proves\neg\varphi$.)
     \begin{itemize}
         \item Tablo je \emph{sporné}, pokud je každá jeho větev sporná.
         \item Větev je \emph{sporná}, pokud obsahuje položky $\mathrm{T}\psi$ a $\mathrm{F}\psi$ pro nějakou sentenci $\psi$, jinak je \emph{bezesporná}.
         \item Tablo je \emph{dokončené}, pokud je každá jeho větev dokončená.
-        \item Větev je \emph{dokončená}, pokud 
+        \item Větev je \emph{dokončená}, pokud
         \begin{itemize}
             \item je sporná, nebo
             \item je každá položka na této větvi \emph{redukovaná} a zároveň větev obsahuje položku $\mathrm{T}\alpha$ pro každý axiom $\alpha\in T$.
         \end{itemize}
-         
-        \item Položka $P$ je \emph{redukovaná} na větvi $V$ procházející touto položkou, pokud 
+
+        \item Položka $P$ je \emph{redukovaná} na větvi $V$ procházející touto položkou, pokud
         \begin{itemize}
             \item je tvaru $\mathrm{T}\psi$ resp. $\mathrm{F}\psi$ pro \emph{atomickou sentenci} $\psi$ (tj. $R(t_1,\dots,t_n)$, kde $t_i$ jsou \emph{konstantní} $L_C$-termy), nebo
             \item není typu `všichni' a vyskytuje se na $V$ jako kořen atomického tabla\footnote{Byť podle konvence tento kořen nezapisujeme.} (tj., typicky, při konstrukci tabla již došlo k jejímu rozvoji na $V$), nebo
@@ -235,13 +235,13 @@ Definice v této části jsou téměř identické odpovídajícím definicím z 
         \begin{itemize}
             \item položka $P$ má $(i+1)$-ní výskyt na $V$, a zároveň
             \item na $V$ se vyskytuje položka $\T\varphi(x/t_i)$ (je-li $P=\T(\forall x)\varphi(x)$) resp. $\F\varphi(x/t_i)$ (je-li $P=\F(\exists x)\varphi(x)$), kde $t_i$ je $i$-tý konstantní $L_C$-term.\footnote{Tj. (typicky) už jsme za $x$ substituovali term $t_i$.}
-        \end{itemize} 
+        \end{itemize}
     \end{itemize}
 \end{definition}
 Všimněte si, že je-li položka typu `všichni' na nějaké větvi redukovaná, musí mít na této větvi nekonečně mnoho výskytů, a museli jsme v nich použít při substituci všechny možnosti, tj. všechny konstantní $L_C$-termy.
-    
+
 \begin{example}\label{example:tableau-proofs}
-Jako příklad sestrojme tablo důkazy \emph{v logice} (z prázdné teorie) následujících sentencí: 
+Jako příklad sestrojme tablo důkazy \emph{v logice} (z prázdné teorie) následujících sentencí:
         \begin{enumerate}[(a)]
             \item $(\forall x)(P(x) \limplies Q(x)) \limplies ((\forall x)P(x) \limplies (\forall x)Q(x))$, kde $P,Q$ jsou unární relační symboly.
             \item $(\forall x)(\varphi(x) \land \psi(x)) \liff((\forall x)\varphi (x) \land (\forall x)\psi(x))$, kde $\varphi(x),\psi(x)$ jsou libovolné formule s jedinou volnou proměnnou $x$.
@@ -262,13 +262,13 @@ Výsledná tabla jsou na Obrázcích \ref{figure:predicate-tableau-more-examples
                                     [\T(\forall x)(P(x) \limplies Q(x))
                                         [\T P(c_0)\limplies Q(c_0)
                                             [\textcolor{red}{\F P(c_0)}, tikz={\node[fit to=tree,label=below:$\otimes$] {};}]
-                                            [\textcolor{red}{\T Q(c_0)}, tikz={\node[fit to=tree,label=below:$\otimes$] {};}]            
+                                            [\textcolor{red}{\T Q(c_0)}, tikz={\node[fit to=tree,label=below:$\otimes$] {};}]
                                         ]
                                     ]
                                 ]
                             ]
                         ]
-                    ]                
+                    ]
                 ]
             ]
         ]
@@ -276,7 +276,7 @@ Výsledná tabla jsou na Obrázcích \ref{figure:predicate-tableau-more-examples
 \end{forest}
 \caption{Tablo důkaz z Příkladu \ref{example:tableau-proofs} (a).}
 \label{figure:predicate-tableau-more-examples-a}
-\end{figure} 
+\end{figure}
 
 \begin{figure}[htbp]
 \centering
@@ -324,7 +324,7 @@ for tree={math content}
                                 [\textcolor{red}{\T\psi(c_0)}, tikz={\node[fit to=tree,label=below:$\otimes$] {};}]
                             ]
                         ]
-                    ]                
+                    ]
                 ]
             ]
         ]
@@ -333,7 +333,7 @@ for tree={math content}
 \end{forest}
 \caption{Tablo důkaz z Příkladu \ref{example:tableau-proofs} (b). Konstantu $c_0$ můžeme použít jako \emph{novou} ve všech třech případech. Stačí, že se zatím nevyskytuje \emph{na dané větvi}.}
 \label{figure:predicate-tableau-more-examples-b}
-\end{figure} 
+\end{figure}
 \end{example}
 
 
@@ -360,7 +360,7 @@ Buď $P$ položka v nejlevějším vrcholu $v$ na co nejmenší úrovni tabla $\
 \end{itemize}
 Jinak, pokud taková položka $P$ a vrchol $v$ neexistují, tj. všechny položky jsou redukované, definujeme $\tau_i'=\tau_i$.
 
-Tablo $\tau_{i+1}$ je potom tablo vzniklé z $\tau_i'$ připojením $\mathrm{T}\alpha_i$ na každou bezespornou větev $\tau_i'$, pokud $i\leq |T|$. Jinak (je-li $T$ konečná a už jsme použili všechny axiomy) tento krok přeskočíme a definujeme $\tau_{i+1}=\tau_i'$. 
+Tablo $\tau_{i+1}$ je potom tablo vzniklé z $\tau_i'$ připojením $\mathrm{T}\alpha_i$ na každou bezespornou větev $\tau_i'$, pokud $i\leq |T|$. Jinak (je-li $T$ konečná a už jsme použili všechny axiomy) tento krok přeskočíme a definujeme $\tau_{i+1}=\tau_i'$.
 \end{definition}
 
 Stejně jako ve výrokové logice platí, že systematické tablo je vždy dokončené, a poskytuje konečný důkaz:
@@ -399,8 +399,8 @@ V modelu $\A$ potom bude relace $=^\A$ kongruencí. To nám ale nestačí, chcem
     \begin{itemize}
         \item \emph{kongruencí pro funkci $f$}, pokud pro všechna $a_i,b_i\in A$ taková, že $a_i\sim b_i$ ($1\leq i\leq n$) platí $f(a_1,\dots,a_n)\sim f(b_1,\dots,b_n)$,
         \item \emph{kongruencí pro relaci $R$}, pokud pro všechna $a_i,b_i\in A$ taková, že $a_i\sim b_i$ ($1\leq i\leq n$) platí $(a_1,\dots,a_n)\in R$ právě když $(b_1,\dots,b_n)\in R$.
-    \end{itemize}    
-    \emph{Kongruence struktury} $\A$ je ekvivalence $\sim$ na množině $A$, která je kongruencí pro všechny funkce a relace $\A$. 
+    \end{itemize}
+    \emph{Kongruence struktury} $\A$ je ekvivalence $\sim$ na množině $A$, která je kongruencí pro všechny funkce a relace $\A$.
 \end{definition}
 
 \begin{definition}[Faktorstruktura]
@@ -408,8 +408,8 @@ V modelu $\A$ potom bude relace $=^\A$ kongruencí. To nám ale nestačí, chcem
     \begin{itemize}
         \item $f^{\A/_\sim}([a_1]_\sim,\dots,[a_n]_\sim)=[f^\A(a_1,\dots,a_n)]_\sim$, pro každý ($n$-ární) funkční symbol $f$, a
         \item $R^{\A/_\sim}([a_1]_\sim,\dots,[a_n]_\sim)$ právě když $R^\A(a_1,\dots,a_n)$, pro každý ($n$-ární) relační symbol~$R$.
-    \end{itemize} 
-    
+    \end{itemize}
+
 \end{definition}
 
 
@@ -429,7 +429,7 @@ V modelu $\A$ potom bude relace $=^\A$ kongruencí. To nám ale nestačí, chcem
 Z axiomů $(i)$ a $(iii)$ tedy plyne, že relace $=^\A$ je ekvivalence na $A$, a axiomy $(ii)$ a $(iii)$ vyjadřují, že $=^\A$ je kongruencí $\A$. V tablo metodě v případě jazyka s rovností implicitně přidáme všechny axiomy rovnosti:
 
 \begin{definition}[Tablo důkaz s rovností]
-    Je-li $T$ teorie v jazyce $L$ s rovností, potom označme jako $T^*$ rozšíření teorie $T$ o generální uzávěry\footnote{Neboť v tablo metodě potřebujeme \emph{sentence}.} axiomů rovnosti pro jazyk $L$. \emph{Tablo důkaz} z teorie $T$ je \emph{tablo důkaz} z $T^*$, podobně pro tablo zamítnutí (a obecně jakékoliv tablo).    
+    Je-li $T$ teorie v jazyce $L$ s rovností, potom označme jako $T^*$ rozšíření teorie $T$ o generální uzávěry\footnote{Neboť v tablo metodě potřebujeme \emph{sentence}.} axiomů rovnosti pro jazyk $L$. \emph{Tablo důkaz} z teorie $T$ je \emph{tablo důkaz} z $T^*$, podobně pro tablo zamítnutí (a obecně jakékoliv tablo).
 \end{definition}
 
 Platí následující jednoduché pozorování:
@@ -456,7 +456,7 @@ Všimněte si, že stačí expandovat $\A$ o nové konstanty $c^\A$ vyskytujíc�
 
 \begin{proof}
     Mějme tablo $\tau=\bigcup_{i\geq 0}\tau_i$ z teorie $T$ a model $\A\in\M_L(T)$ shodující se s kořenem $\tau$, tedy s (jednoprvkovou) větví $V_0$ v (jednoprvkovém) $\tau_0$.
-    
+
     Indukcí podle $i$ najdeme posloupnost větví $V_i$ a expanzí $\A_i$ modelu $\A$ o konstanty $c^\A\in C$ vyskytující se na $V_i$ takových, že $V_i$ je větev v tablu $\tau_i$ shodující se s modelem $\A_i$, $V_{i+1}$ je prodloužením $V_i$, a $\A_{i+1}$ je expanzí $\A_i$ (mohou si být i rovny). Požadovaná větev tabla $\tau$ je potom $V=\bigcup_{i\geq 0}V_i$. Expanzi modelu $\A$ do jazyka $L_C$ získáme jako `limitu' expanzí $\A_i$, tj. vyskytuje-li se symbol $c\in C$ na $V$, vyskytuje se na nějaké z větví $V_i$ a interpretujeme ho stejně jako v $\A_i$ (ostatní pomocné symboly interpretujeme libovolně).
     \begin{itemize}
         \item Pokud $\tau_{i+1}$ vzniklo z $\tau_i$ bez prodloužení větve $V_i$, definujeme $V_{i+1}=V_i$ a $\A_{i+1}=\A_{i}$.
@@ -465,17 +465,17 @@ Všimněte si, že stačí expandovat $\A$ o nové konstanty $c^\A$ vyskytujíc�
         \begin{itemize}
             \item Pokud jsme připojili atomické tablo pro logickou spojku, položíme $\A_{i+1}=\A_i$ (nepřidali jsme nový pomocný symbol). Protože $\A_{i+1}$ se shoduje s kořenem atomického tabla, shoduje se i s některou z jeho větví (stejně jako ve výrokové logice); definujeme $V_{i+1}$ jako prodloužení $V_i$ o tuto větev.
             \item Je-li položka $P$ typu `svědek': Pokud je $P=\T(\exists x)\varphi(x)$, potom $\A_i\models(\exists x)\varphi(x)$, tedy existuje $a\in A$ takové, že $\A_i\models\varphi(x)[e(x/a)]$. Větev $V_{i+1}$ definujeme jako prodloužení $V_i$ o nově přidanou položku $\T\varphi(x/c)$ a model $\A_{i+1}$ jako expanzi $\A_i$ o konstantu $c^A=a$. Případ $P=\F(\forall x)\varphi(x)$ je obdobný.
-            \item Je-li položka $P$ typu `všichni', větev $V_{i+1}$ definujeme jako prodloužení $V_i$ o atomické tablo. Nově přidaná položka je $\T\varphi(x/t)$ nebo $\F\varphi(x/t)$ pro nějaký $L_C$-term $t$. Předpokládejme, že jde o první z těchto dvou možností, pro druhou je důkaz analogický. 
-            Model $\A_{i+1}$ definujeme jako \emph{libovolnou} expanzi $\A_i$ o nové konstanty vyskytující se v $t$.    
+            \item Je-li položka $P$ typu `všichni', větev $V_{i+1}$ definujeme jako prodloužení $V_i$ o atomické tablo. Nově přidaná položka je $\T\varphi(x/t)$ nebo $\F\varphi(x/t)$ pro nějaký $L_C$-term $t$. Předpokládejme, že jde o první z těchto dvou možností, pro druhou je důkaz analogický.
+            Model $\A_{i+1}$ definujeme jako \emph{libovolnou} expanzi $\A_i$ o nové konstanty vyskytující se v $t$.
             Protože $\A_i\models(\forall x)\varphi(x)$, platí i $\A_{i+1}\models(\forall x)\varphi(x)$ a tedy i $\A_{i+1}\models\varphi(x/t)$; model $\A_{i+1}$ se tedy shoduje s větví $V_i$.
-        \end{itemize}       
+        \end{itemize}
     \end{itemize}
 \end{proof}
 
 Připomeňme stručně myšlenku důkazu Věty o korektnosti: Pokud by existoval důkaz a zároveň protipříklad, protipříklad by se musel shodovat s některou větví důkazu, ty jsou ale všechny sporné. Důkaz je tedy téměř stejný jako ve výrokové logice.
 
 \begin{theorem}[O korektnosti]
-Je-li sentence $\varphi$ tablo dokazatelná z teorie $T$, potom je $\varphi$ pravdivá v $T$, tj. $T\proves\varphi\ \Rightarrow\ T\models\varphi$.    
+Je-li sentence $\varphi$ tablo dokazatelná z teorie $T$, potom je $\varphi$ pravdivá v $T$, tj. $T\proves\varphi\ \Rightarrow\ T\models\varphi$.
 \end{theorem}
 
 \begin{proof}
@@ -504,7 +504,7 @@ Je-li jazyk $L$ bez rovnosti, potom:
     $$
     Speciálně, pro konstantní symbol $c$ máme $c^\mathcal A=\text{``$c$''}$.
 \end{itemize}
-Funkci $f^\mathcal A$ tedy interpretujeme jako `vytvoření' nového termu ze symbolu $f$ a vstupních termů (řetězců). 
+Funkci $f^\mathcal A$ tedy interpretujeme jako `vytvoření' nového termu ze symbolu $f$ a vstupních termů (řetězců).
 
 Nechť je $L$ jazyk s rovností. Připomeňme, že naše tablo je nyní z teorie $T^*$, tj. z rozšíření~$T$ o axiomy rovnosti pro $L$. Nejprve vytvoříme kanonický model $\mathcal B$ pro $V$ jako by byl $L$ bez rovnosti (jeho doména $B$ je tedy množina všech konstantních $L_C$-termů). Dále definujeme relaci $=^B$ stejně jako pro ostatní relační symboly:
 $$
@@ -517,15 +517,15 @@ Jak plyne z diskuze v Sekci \ref{section:tableaux-equality}, relace $=^B$ je opr
 
 
 \begin{observation}\label{canonical-with-equality-satisfies-the-same}
-    Pro každou formuli $\varphi$ máme $\B\models\varphi$ (kde symbol $=$ je interpretován jako binární relace $=^B$), právě když $\A=\B/_{=^B}\models\varphi$ (kde $=$ je interpretován jako identita).    
+    Pro každou formuli $\varphi$ máme $\B\models\varphi$ (kde symbol $=$ je interpretován jako binární relace $=^B$), právě když $\A=\B/_{=^B}\models\varphi$ (kde $=$ je interpretován jako identita).
 \end{observation}
 
 
 Všimněte si, že v jazyce bez rovnosti je kanonický model vždy spočetně nekonečný. V jazyce s rovností může ale být konečný, jak uvidíme v následujících příkladech.
 
 \begin{example}
-    Nejprve si ukažme příklad kanonického modelu v jazyce bez rovnosti. Mějme teorii $T=\{(\forall x)R(f(x))\}$ v jazyce $L=\langle R,f,d \rangle$ bez rovnosti, kde $R$ je unární relační, $f$ unární funkční, a $d$ konstantní symbol. Najděme protipříklad ukazující, že $T\not\models\neg R(d)$. 
-    
+    Nejprve si ukažme příklad kanonického modelu v jazyce bez rovnosti. Mějme teorii $T=\{(\forall x)R(f(x))\}$ v jazyce $L=\langle R,f,d \rangle$ bez rovnosti, kde $R$ je unární relační, $f$ unární funkční, a $d$ konstantní symbol. Najděme protipříklad ukazující, že $T\not\models\neg R(d)$.
+
     Systematické tablo z $T$ s položkou $\F\neg R(d)$ v kořeni není sporné, obsahuje jedinou větev $V$, která je bezesporná. (Sestrojte si tablo sami!) Kanonický model pro $V$ je $L_C$-struktura $\A=\langle A,R^\A,f^\A,d^\A,c_0^\A,c_1^\A,c_2^\A,\dots\rangle$, jejíž doména je
     $$
     A=\{\text{``$d$''},\text{``$f(d)$''},\text{``$f(f(d))$''},\dots,\text{``$c_0$''},\text{``$f(c_0)$''},\text{``$f(f(c_0))$''},\dots,\text{``$c_1$''},\text{``$f(c_1)$''},\text{``$f(f(c_1))$''},\dots\}
@@ -541,7 +541,7 @@ Všimněte si, že v jazyce bez rovnosti je kanonický model vždy spočetně ne
 \end{example}
 
 \begin{example}
-    Nyní příklad v jazyce s rovností: Mějme teorii $T=\{(\forall x)R(f(x)),(\forall x)(x=f(f(x)))\}$ v jazyce $L=\langle R,f,d \rangle$ s rovností. Opět najděme protipříklad ukazující, že $T\not\models\neg R(d)$. 
+    Nyní příklad v jazyce s rovností: Mějme teorii $T=\{(\forall x)R(f(x)),(\forall x)(x=f(f(x)))\}$ v jazyce $L=\langle R,f,d \rangle$ s rovností. Opět najděme protipříklad ukazující, že $T\not\models\neg R(d)$.
 
     Systematické tablo z teorie $T^*$ (tj. z $T$ rozšířené o axiomy rovnosti pro $L$) s položkou $\F\neg R(d)$ v kořeni obsahuje bezespornou větev $V$. (Sestrojte si tablo sami!) Nejprve sestrojíme kanonický model $\B$ pro tuto větev, jako by byl jazyk bez rovnosti:
     $$
@@ -551,7 +551,7 @@ Všimněte si, že v jazyce bez rovnosti je kanonický model vždy spočetně ne
     $$
         B/_{=^B} = \{[\text{``$d$''}]_{=^B},[\text{``$f(d)$''}]_{=^B},[\text{``$c_0$''}]_{=^B},[\text{``$f(c_0)$''}]_{=^B},[\text{``$c_1$''}]_{=^B},[\text{``$f(c_1)$''}]_{=^B},\dots\}
     $$
-    Kanonický model pro větev $V$ je potom $L_C$-struktura 
+    Kanonický model pro větev $V$ je potom $L_C$-struktura
     $$
     \A=\B/_{=^B}=\langle A,R^\A,f^\A,d^\A,c_0^\A,c_1^\A,c_2^\A,\dots\rangle
     $$
@@ -570,7 +570,7 @@ Všimněte si, že v jazyce bez rovnosti je kanonický model vždy spočetně ne
         \item Sestrojte dokončené tablo s položkou $\T (\forall x)(\forall y)(x=y)$ v kořeni. Sestrojte kanonický model pro (jedinou, bezespornou) větev tohoto tabla.
         \item Sestrojte dokončené tablo s položkou $\T (\forall x)(\forall y)(\forall z)(x=y\lor x=z \lor y=z)$ v kořeni. Sestrojte kanonické modely pro několik bezesporných větví a porovnejte je.
     \end{enumerate}
-\end{exercise} 
+\end{exercise}
 
 Nyní jsme připraveni dokázat Větu o úplnosti. Použijeme opět následující pomocné lemma, jehož znění je zcela stejné, jako znění Lemmatu \ref{lemma:canonical-model-agrees} a důkaz se liší jen v technických detailech.
 
@@ -578,18 +578,18 @@ Nyní jsme připraveni dokázat Větu o úplnosti. Použijeme opět následujíc
     Kanonický model pro (bezespornou dokončenou) větev $V$ se shoduje s $V$.
 \end{lemma}
 \begin{proof}
-Nejprve uvažme jazyky bez rovnosti. Ukážeme indukcí podle struktury sentencí v položkách, že kanonický model $\A$ se shoduje se všemi položkami $P$ na větvi $V$. 
+Nejprve uvažme jazyky bez rovnosti. Ukážeme indukcí podle struktury sentencí v položkách, že kanonický model $\A$ se shoduje se všemi položkami $P$ na větvi $V$.
 
 Základ indukce, tj. případ, kdy $\varphi=R(s_1,\dots,s_n)$ je atomická sentence, je jednoduchý: Je-li na $V$ položka $\T\varphi$, potom $(s_1,\dots,s_n)\in R^\A$ plyne přímo z definice kanonického modelu, máme tedy $\A\models\varphi$.  Je-li na $V$ položka $\F\varphi$, potom na $V$ není položka $\T\varphi$ ($V$ je bezesporná), $(s_1,\dots,s_n)\not\in R^\A$, a $\A\not\models\varphi$
 
-Nyní indukční krok. Rozebereme jen několik případů, ostatní se dokáží obdobně. 
+Nyní indukční krok. Rozebereme jen několik případů, ostatní se dokáží obdobně.
 
 Pro logické spojky je důkaz zcela stejný jako ve výrokové logice, například je-li $P=\mathrm{F}\varphi\land\psi$, potom protože je $P$ na $V$ redukovaná, vyskytuje se na $V$ položka $\mathrm{F}\varphi$ nebo položka $\mathrm{F}\psi$. Platí tedy $\A\not\models\varphi$ nebo $\A\not\models\psi$, z čehož plyne $\A\not\models\varphi\land\psi$ a $\A$ se shoduje s $P$.
 
-Máme-li položku typu ``všichni'', například $P=\T(\forall x)\varphi(x)$ 
+Máme-li položku typu ``všichni'', například $P=\T(\forall x)\varphi(x)$
 (případ $P=\F(\exists x)\varphi(x)$ je obdobný), potom jsou na $V$ i položky $T\varphi(x/t)$ pro každý konstantní $L_C$-term, tj. pro každý prvek $\text{``$t$''}\in A$. Dle indukčního předpokladu je $\A\models\varphi(x/t)$ pro každé $\text{``$t$''}\in A$, tedy $\A\models(\forall x)\varphi(x)$.
 
-Máme-li položku typu ``svědek'', například $P=\T(\exists x)\varphi(x)$ 
+Máme-li položku typu ``svědek'', například $P=\T(\exists x)\varphi(x)$
 (případ $P=\F(\forall x)\varphi(x)$ je obdobný), potom je na $V$ i položka $T\varphi(x/c)$ pro nějaké $\text{``$c$''}\in A$. Dle indukčního předpokladu je $\A\models\varphi(x/c)$, tedy i $\A\models(\exists x)\varphi(x)$.
 
 Je-li jazyk s rovností, máme kanonický model $\A=\B/_{=^B}$, důkaz výše platí pro $\B$, a zbytek plyne z Pozorování \ref{canonical-with-equality-satisfies-the-same}.
@@ -602,8 +602,8 @@ Je-li jazyk s rovností, máme kanonický model $\A=\B/_{=^B}$, důkaz výše pl
 Důkaz Věty o úplnosti je také analogický její verzi pro výrokovou logiku:
 
 \begin{theorem}[O úplnosti]\label{theorem:completeness-theorem-predicate}
-    Je-li sentence $\varphi$ pravdivá v teorii $T$, potom je tablo dokazatelná z $T$, tj. $T\models\varphi\ \Rightarrow\ T\proves\varphi$.    
-\end{theorem} 
+    Je-li sentence $\varphi$ pravdivá v teorii $T$, potom je tablo dokazatelná z $T$, tj. $T\models\varphi\ \Rightarrow\ T\proves\varphi$.
+\end{theorem}
 
 \begin{proof}
 Ukážeme, že libovolné \emph{dokončené} tablo z $T$ s položkou $\mathrm{F}\varphi$ v kořeni je nutně sporné. Důkaz provedeme sporem: kdyby takové tablo nebylo sporné, existovala by v něm bezesporná (dokončená) větev $V$. Uvažme kanonický model $\A$ pro tuto větev, a označme jako $\A'$ jeho redukt na jazyk $L$. Protože je $V$ dokončená, obsahuje $\mathrm{T}\alpha$ pro všechny axiomy $\alpha\in T$. Model $\A$ se podle Lemmatu \ref{lemma:canonical-model-agrees-predicate} shoduje se všemi položkami na $V$, splňuje tedy všechny axiomy a máme i $\A'\models T$. Protože se ale $\A$ shoduje i s položkou $\mathrm{F}\varphi$ v kořeni, platí i $\A'\not\models\varphi$, což znamená, že $\A'\in \M_L(T)\setminus\M_L(\varphi)$, tedy $T\not\models\varphi$, a to je spor. Tablo tedy muselo být sporné, tj. být tablo důkazem $\varphi$ z $T$.
@@ -653,7 +653,7 @@ K této větě se ještě vrátíme v Kapitole \ref{chapter:model-theory}, kde s
 Stejně jako ve výrokové logice platí Věta o kompaktnosti, stejný je i její důkaz:
 
 \begin{theorem}[O kompaktnosti]\label{theorem:compactness-theorem-predicate}
-    Teorie má model, právě když každá její konečná část má model.    
+    Teorie má model, právě když každá její konečná část má model.
 \end{theorem}
 \begin{proof}
 Model teorie je zřejmě modelem každé její části. Naopak, pokud $T$ nemá model, je sporná, tedy $T\proves\bot$. Vezměme nějaký \emph{konečný} tablo důkaz $\bot$ z $T$. K jeho konstrukci stačí konečně mnoho axiomů $T$, ty tvoří konečnou podteorii $T'\subseteq T$, která nemá model.
@@ -663,7 +663,7 @@ Model teorie je zřejmě modelem každé její části. Naopak, pokud $T$ nemá 
 \subsection{Nestandardní model přirozených čísel}
 
 Na úplný závěr této sekce si ukážeme, že existuje tzv. \emph{nestandardní model} přirozených čísel. Klíčem je Věta o kompaktnosti.
-    
+
 Nechť $\underline{\mathbb N}=\langle\mathbb N,S,+,\cdot,0,\leq\rangle$ je standardní model přirozených čísel. Označme $\Th(\underline{\mathbb N})$ množinu všech sentencí \emph{pravdivých} ve struktuře $\underline{\mathbb N}$ (tzv. \emph{teorii struktury} $\underline{\mathbb N}$). Pro $n\in \mathbb N$ definujme \emph{$n$-tý numerál} jako term $\underline n=S(S(\cdots (S(0)\cdots))$, kde $S$ je aplikováno $n$-krát.
 
 Vezměme nový konstantní symbol $c$ a vyjádřeme, že je ostře větší než každý $n$-tý numerál:
@@ -671,13 +671,13 @@ $$
 T=\Th(\underline{\mathbb N})\cup\{\underline n<c\mid n\in \mathbb N\}
 $$
 Všimněte si, že každá konečná část teorie $T$ má model. Z věty o kompaktnosti tedy plyne, že i teorie $T$ má model. Říkáme mu \emph{nestandardní model} (označme ho $\A$). Platí v něm tytéž sentence, které platí ve standardním modelu, ale zároveň obsahuje prvek $c^\A$, který je větší než každé $n\in \mathbb N$ (čímž zde myslíme hodnotu termu $\underline n$ v nestandardním modelu $\A$).
-    
+
 
 \section{Hilbertovský kalkulus v predikátové logice}
 
 Na závěr kapitoly si ukážeme, jak lze adaptovat Hilbertův kalkulus, představený v Sekci \ref{section:hilbert-calculus-propositional}, pro použití v predikátové logice. To není těžké, abychom se vypořádali s kvantifikátory, stačí přidat dvě nová schémata logických axiomů a jedno nové inferenční pravidlo. Opět si ukážeme korektnost tohoto dokazovacího systému, a jen zmíníme, že je také úplný.
 
-Důkazy budou sestávat z libovolných formulí, nejen sentencí. Připomeňme, že Hilbertovský kalkulus používá jen spojky $\neg$ a $\limpliessymb$. Budeme mít obdobné logické axiomy, jako ve výrokové logice; v případě jazyka s rovností navíc přidáme \emph{axiomy rovnosti}. 
+Důkazy budou sestávat z libovolných formulí, nejen sentencí. Připomeňme, že Hilbertovský kalkulus používá jen spojky $\neg$ a $\limpliessymb$. Budeme mít obdobné logické axiomy, jako ve výrokové logice; v případě jazyka s rovností navíc přidáme \emph{axiomy rovnosti}.
 
 \begin{definition}[Schémata axiomů v hilbertovském kalkulu v predikátové logice]
 Pro libovolné formule $\varphi,\psi,\chi$, term $t$, a proměnnou $x$ jsou následující formule logickými axiomy:
@@ -688,23 +688,23 @@ Pro libovolné formule $\varphi,\psi,\chi$, term $t$, a proměnnou $x$ jsou nás
     \item $(\forall x)\varphi \limplies \varphi(x/t)$, je-li $t$ substituovatelný za $x$ do $\varphi$
     \item $(\forall x)(\varphi \to \psi) \limplies (\varphi \limplies (\forall x)\psi)$, není-li $x$ volná ve $\varphi$
 \end{enumerate}
-Je-li jazyk s rovností, potom jsou logickými axiomy také \emph{axiomy rovnosti} pro daný jazyk.       
+Je-li jazyk s rovností, potom jsou logickými axiomy také \emph{axiomy rovnosti} pro daný jazyk.
 \end{definition}
 
-Všimněte si, že všechny logické axiomy jsou opravdu tautologie. Jako odvozovací pravidla nám poslouží \emph{modus ponens} a dále \emph{pravidlo generalizace}: 
+Všimněte si, že všechny logické axiomy jsou opravdu tautologie. Jako odvozovací pravidla nám poslouží \emph{modus ponens} a dále \emph{pravidlo generalizace}:
 
 \begin{definition}[Modus ponens]
 \emph{Modus ponens} říká, že pokud jsme již dokázali $\varphi$ a také  $\varphi\limplies\psi$, můžeme odvodit i formuli $\psi$:
 $$
 \frac{\varphi, \varphi \limplies \psi}{\psi}
-$$ 
+$$
 \end{definition}
 
 \begin{definition}[Pravidlo generalizace]
     \emph{Pravidlo generalizace} říká, že pokud jsme dokázali $\varphi$, lze odvodit i formuli $(\forall x)\varphi$ (pro libovolnou proměnnou $x$):
     $$
     \frac{\varphi}{(\forall x)\varphi}
-    $$ 
+    $$
 \end{definition}
 
 Všimněte si, že obě odvozovací pravidla jsou \emph{korektní}, tj. platí-li v nějaké teorii $T\models\varphi$ a $T\models\varphi\limplies\psi$, máme i $T\models\psi$, a podobně platí-li $T\models\varphi$, platí i $T\models(\forall x)\varphi$.
@@ -719,16 +719,16 @@ Stejně jako ve výrokové logice, \emph{důkaz} bude konečná posloupnost form
     \item $\varphi_i$ lze odvodit z nějakých předchozích formulí $\varphi_j,\varphi_k$ (kde $j,k<i$) pomocí modus ponens, nebo
     \item $\varphi_i$ lze odvodit z nějaké předchozí formule $\varphi_j$ (kde $j<i$) pomocí pravidla generalizace.
     \end{itemize}
-    Existuje-li hilbertovský důkaz, je $\varphi$ \emph{(hilbertovsky) dokazatelná}, píšeme $T\proves_H\varphi$.           
+    Existuje-li hilbertovský důkaz, je $\varphi$ \emph{(hilbertovsky) dokazatelná}, píšeme $T\proves_H\varphi$.
 \end{definition}
 
 I v predikátové logice je hilbertovský kalkulus korektní a úplný dokazovací systém.
 
 \begin{theorem}[O korektnosti hilbertovského kalkulu]
-Pro každou teorii $T$ a formuli $\varphi$ platí: 
+Pro každou teorii $T$ a formuli $\varphi$ platí:
 $$
 T\proves_H \varphi\ \Rightarrow\ T\models\varphi
-$$ 
+$$
 \end{theorem}
 \begin{proof}
 Indukcí dle indexu $i$ ukážeme, že každá formule $\varphi_i$ z důkazu (tedy i $\varphi_n=\varphi$) platí v $T$.
@@ -739,7 +739,7 @@ Je-li $\varphi_i$ logický axiom (včetně axiomu rovnosti), $T \models \varphi_
 Pro úplnost ještě vyslovme úplnost, důkaz ale neuvedeme.
 
 \begin{theorem}[O úplnosti hilbertovského kalkulu]
-Pro každou teorii $T$ a formuli $\varphi$ platí: 
+Pro každou teorii $T$ a formuli $\varphi$ platí:
 $$
 T\models\varphi\ \Rightarrow\ T\proves_H\varphi
 $$

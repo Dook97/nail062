@@ -11,14 +11,14 @@ Praktické SAT solvery si ale umí poradit s instancemi obsahujícími mnoho (a�
 
 \section{SAT solvery}
 
-První řešiče SAT byly vyvinuty v 60. letech 20. století. Jejich základem je téměř vždy algoritmus DPLL (Davis–Putnam–Logemann–Loveland), který představíme v Sekci \ref{section:DPLL}, respektive některé z jeho vylepšení. Po roce 2000 dochází k poněkud překvapivému, dramatickému vývoji technologií pro řešiče SAT a tím i k rapidnímu růstu jejich užitečnosti v různých oblastech aplikované informatiky. 
+První řešiče SAT byly vyvinuty v 60. letech 20. století. Jejich základem je téměř vždy algoritmus DPLL (Davis–Putnam–Logemann–Loveland), který představíme v Sekci \ref{section:DPLL}, respektive některé z jeho vylepšení. Po roce 2000 dochází k poněkud překvapivému, dramatickému vývoji technologií pro řešiče SAT a tím i k rapidnímu růstu jejich užitečnosti v různých oblastech aplikované informatiky.
 
 Moderní SAT solvery používají celou řadu technologií pro efektivní řešení typických instancí pocházejících z různých aplikačních domén, strategií a heuristik pro exploraci prostoru řešení (například i za použití strojového učení a neuronových sítí), a dalších vylepšení. Tyto moderní nástroje mají typicky několik desítek tisíc řádků kódu. Dostupnost efektivních SAT solverů významně ovlivnila vývoj například v oblasti softwarové verifikace, analýzy programů, optimalizace, nebo umělé inteligence. Nejlepší SAT solvery spolu pravidelně soutěží v rámci \href{http://www.satcompetition.org}{SAT competition}.
 
 Pro vyzkoušení SAT solvingu nám poslouží řešič \href{https://github.com/mi-ki/glucose-syrup}{\texttt{Glucose}}. Ten přijímá vstup v jednoduchém formátu \href{http://people.sc.fsu.edu/~jburkardt/data/cnf/cnf.html}{DIMACS CNF}. Ukažme si postup použití na následující hříčce zvané \emph{boardomino}:
 
 \begin{example}[Boardomino]
-Lze šachovnici s dvěma chybějícími protilehlými rohy perfektně pokrýt kostkami domina?    
+Lze šachovnici s dvěma chybějícími protilehlými rohy perfektně pokrýt kostkami domina?
 \end{example}
 
 Jak tento problém formalizovat? Zvolme výrokové proměnné $h_{i,j},v_{i,j}$ ($1\leq i,j\leq n$), kde $h_{i,j}$ znamená ``na pozici $(i,j)$ leží levá polovina horizontálně orientované kostky'' a podobně $v_{i,j}$ pro horní polovinu vertikální kostky. Zde $n=8$, ale můžeme vyzkoušet i pro jiné (sudé) rozměry šachovnice. Nyní axiomatizujeme všechny požadované vlastnosti:
@@ -34,7 +34,7 @@ Jak tento problém formalizovat? Zvolme výrokové proměnné $h_{i,j},v_{i,j}$ 
     \item každé políčko je pokryto nejvýše jednou kostkou (první řádek a sloupec zvlášť):
     \begin{align*}
         (\neg h_{i,j-1}\lor\neg h_{i,j})\land
-        (\neg h_{i,j-1}\lor\neg v_{i-1,j})\land        
+        (\neg h_{i,j-1}\lor\neg v_{i-1,j})\land
         (\neg h_{i,j-1}\lor\neg v_{i,j})\land&\\
         (\neg h_{i,j}\lor\neg v_{i-1,j})\land
         (\neg h_{i,j}\lor\neg v_{i,j})\land
@@ -42,7 +42,7 @@ Jak tento problém formalizovat? Zvolme výrokové proměnné $h_{i,j},v_{i,j}$ 
         &\text{ pro }1<i,j\leq n\\
         (\neg h_{1,j-1}\lor \neg h_{1,j})\land(\neg h_{1,j-1}\lor \neg v_{1,j})\land(\neg h_{1,j}\lor \neg v_{1,j})&\text{ pro }1<j\leq n\\
         (\neg h_{i,1}\lor \neg v_{i-1,1})\land(\neg h_{i,1}\lor\neg v_{i,1})\land (\neg v_{i-1,1}\lor\neg v_{i,1})&\text{ pro }1<i\leq n
-    \end{align*}    
+    \end{align*}
 
 
 
@@ -73,16 +73,16 @@ Pro problém 2-SAT ale existuje polynomiální (dokonce lineární) algoritmus, 
 
 Implikační graf 2-CNF výroku $\varphi$ je založený na myšlence, že 2-klauzuli $\ell_1\lor \ell_2$ (kde $\ell_1,\ell_2$ jsou literály) lze chápat jako dvojici implikací: $\overline{\ell_1}\limplies\ell_2$ a $\overline{\ell_2}\limplies \ell_1$.\footnote{V předchozí kapitole jsme vyjadřovali $p_1\limplies p_2$ jako $\neg p_1\lor p_2$, zde provádíme opačný postup.} Například, z klauzule $\neg p_1\lor p_2$ vzniknou implikace $p_1\limplies p_2$ a také $,\neg p_2\limplies \neg p_1$. Tedy pokud $p_1$ platí v nějakém modelu, musí platit i $p_2$, a pokud $p_2$ neplatí, nesmí platit ani $p_1$. Jednotkovou klauzuli $\ell$ můžeme také vyjádřit pomocí implikace jako $\overline{\ell}\limplies\ell$, např.\ z $p_1$ dostáváme $\neg p_1\limplies p_1$.
 
-Implikační graf $\mathcal G_\varphi$ je tedy orientovaný graf, jehož vrcholy jsou všechny literály (proměnné z $\Var(\varphi)$ a jejich negace) a hrany jsou dané implikacemi popsanými výše: 
+Implikační graf $\mathcal G_\varphi$ je tedy orientovaný graf, jehož vrcholy jsou všechny literály (proměnné z $\Var(\varphi)$ a jejich negace) a hrany jsou dané implikacemi popsanými výše:
 \begin{itemize}
     \item $V(\mathcal G_\varphi) = \{p, \neg p \mid p\in\Var(\varphi)\}$,
     \item $E(\mathcal G_\varphi) = \{(\overline{\ell_1},\ell_2), (\overline{\ell_2},\ell_1)\mid \ell_1\lor \ell_2\text{ je klauzule }\varphi\}\union\{(\overline{\ell},\ell)\mid \ell \text{ je jednotková klauzule }\varphi\}$
-\end{itemize} 
+\end{itemize}
 
-V našem příkladě máme množinu vrcholů 
+V našem příkladě máme množinu vrcholů
 $$
 V(\mathcal G_\varphi)=\{p_1,p_2,p_3,p_4,p_5,\neg p_1,\neg p_2,\neg p_3,\neg p_4,\neg p_5\}
-$$ 
+$$
 a hrany jsou:
 \begin{align*}
     E(\mathcal G_\varphi)=\{&(p_1,p_2),(\neg p_2,\neg p_1),(p_2,\neg p_3),(p_3,\neg p_2),(\neg p_1,p_3),(\neg p_3,p_1),(\neg p_3,\neg p_4),
@@ -90,8 +90,8 @@ a hrany jsou:
 \end{align*}
 Výsledný graf je znázorněný na Obrázku \ref{figure:implication-graph}.
 
-\begin{figure} 
-    \small   
+\begin{figure}
+    \small
     \centering
         \begin{tikzpicture}[scale=2,
             every node/.style={circle,fill=gray!5,draw,minimum width=1cm,node distance=2cm}
@@ -99,12 +99,12 @@ Výsledný graf je znázorněný na Obrázku \ref{figure:implication-graph}.
         \node[fill=red!10] (-5) {$\neg p_5$};
         \node[fill=blue!10,right of=-5] (-1) {$\neg p_1$};
         \node[fill=blue!10,above of=-1] (-2) {$\neg p_2$};
-        \node[fill=blue!10,below of=-1] (3) {$p_3$};    
+        \node[fill=blue!10,below of=-1] (3) {$p_3$};
         \node[fill=green!10,left of=3] (4) {$p_4$};
-        \node[fill=blue!70,right of=-1] (1) {$p_1$}; 
+        \node[fill=blue!70,right of=-1] (1) {$p_1$};
         \node[fill=blue!70,above of=1] (2) {$p_2$};
-        \node[fill=blue!70,below of=1] (-3) {$\neg p_3$};       
-        \node[fill=red!70,right of=1] (5) {$p_5$};            
+        \node[fill=blue!70,below of=1] (-3) {$\neg p_3$};
+        \node[fill=red!70,right of=1] (5) {$p_5$};
         \node[fill=green!70,right of=-3] (-4) {$\neg p_4$};
         \draw[-{Latex[length=2.5mm]}] (-5) -- (-1);
         \draw[-{Latex[length=2.5mm]}] (-1) -- (3);
@@ -128,10 +128,10 @@ Výsledný graf je znázorněný na Obrázku \ref{figure:implication-graph}.
 
 Nyní musíme najít komponenty silné souvislosti\footnote{\emph{Silná souvislost} znamená, že existuje orientovaná cesta z $u$ do $v$ i z $v$ do $u$, neboli každé dva vrcholy v jedné komponentě leží v orientovaném cyklu. A naopak, každý orientovaný cyklus leží uvnitř nějaké komponenty.} tohoto grafu. V našem příkladě dostáváme následující komponenty: $C_1=\{p_4\}$, $C_2=\{\neg p_5\}$, $C_3=\{\neg p_1,\neg p_2,p_3\}$, $\overline{C_3}=\{p_1,p_2,\neg p_3\}$, $\overline{C_2}=\{p_5\}$, $\overline{C_1}=\{\neg p_4\}$.
 
-Všechny literály v jedné komponentě musí být ohodnoceny stejně. Pokud bychom tedy našli dvojici opačných literálů v jedné komponentě, znamená to, že výrok je nesplnitelný. V opačném případě vždy můžeme najít splňující ohodnocení, jak si dokážeme v Tvrzení \ref{proposition:2-sat-algorithm}. Potřebujeme zajistit, aby z žádné komponenty ohodnocené 1 nevedla hrana do komponenty ohodnocené 0. Provedeme-li kontrakci komponent (a odstraníme-li smyčky), výsledný graf $\mathcal G_\varphi^\ast$ je acyklický (každý cyklus byl uvnitř nějaké komponenty), viz Obrázek \ref{figure:implication-graph-components}. To znamená, že ho můžeme nakreslit v \emph{topologickém uspořádání} (tj.\ uspořádání na přímce, kde hrany vedou jen doprava), viz Obrázek \ref{figure:implication-graph-topological-order} níže. 
+Všechny literály v jedné komponentě musí být ohodnoceny stejně. Pokud bychom tedy našli dvojici opačných literálů v jedné komponentě, znamená to, že výrok je nesplnitelný. V opačném případě vždy můžeme najít splňující ohodnocení, jak si dokážeme v Tvrzení \ref{proposition:2-sat-algorithm}. Potřebujeme zajistit, aby z žádné komponenty ohodnocené 1 nevedla hrana do komponenty ohodnocené 0. Provedeme-li kontrakci komponent (a odstraníme-li smyčky), výsledný graf $\mathcal G_\varphi^\ast$ je acyklický (každý cyklus byl uvnitř nějaké komponenty), viz Obrázek \ref{figure:implication-graph-components}. To znamená, že ho můžeme nakreslit v \emph{topologickém uspořádání} (tj.\ uspořádání na přímce, kde hrany vedou jen doprava), viz Obrázek \ref{figure:implication-graph-topological-order} níže.
 
-\begin{figure} 
-    \small   
+\begin{figure}
+    \small
     \centering
         \begin{tikzpicture}[scale=2,
             every node/.style={circle,fill=gray!5,draw,minimum width=1cm,node distance=2cm}
@@ -139,8 +139,8 @@ Všechny literály v jedné komponentě musí být ohodnoceny stejně. Pokud byc
         \node[fill=red!10] (C1) {$C_1$};
         \node[fill=blue!10,below right of=C1] (C3) {$C_3$};
         \node[fill=green!10,below left of=C3] (C2) {$C_2$};
-        \node[fill=blue!70,right of=C3] (barC3) {$\overline{C_3}$}; 
-        \node[fill=red!70,above right of=barC3] (barC1) {$\overline{C_1}$};                    
+        \node[fill=blue!70,right of=C3] (barC3) {$\overline{C_3}$};
+        \node[fill=red!70,above right of=barC3] (barC1) {$\overline{C_1}$};
         \node[fill=green!70,below right of=barC3] (barC2) {$\overline{C_2}$};
         \draw[-{Latex[length=2.5mm]}] (C1) -- (C3);
         \draw[-{Latex[length=2.5mm]}] (C2) -- (C3);
@@ -156,8 +156,8 @@ Všechny literály v jedné komponentě musí být ohodnoceny stejně. Pokud byc
 
 Při hledání splňujícího ohodnocení (pokud nám nestačí informace, že výrok je splnitelný) potom postupujeme tak, že vezmeme nejlevější dosud neohodnocenou komponentu, ohodnotíme ji 0, opačnou komponentu ohodnotíme 1, a postup opakujeme dokud zbývá nějaká neohodnocená komponenta. Například, topologické uspořádání na Obrázku \ref{figure:implication-graph-topological-order} odpovídá modelu $v=(1,1,0,0,1)$.
 
-\begin{figure} 
-    \small   
+\begin{figure}
+    \small
     \centering
         \begin{tikzpicture}[scale=2,
             every node/.style={circle,fill=gray!5,draw,minimum width=1cm,node distance=2cm}
@@ -165,10 +165,10 @@ Při hledání splňujícího ohodnocení (pokud nám nestačí informace, že v
         \node[fill=red!10,label={below:0}] (C1) {$C_1$};
         \node[fill=green!10,right of=C1,label={below:0}] (C2) {$C_2$};
         \node[fill=blue!10,right of=C2,label={below:0}] (C3) {$C_3$};
-        \node[fill=blue!70,right of=C3,label={below:1}] (barC3) {$\overline{C_3}$}; 
+        \node[fill=blue!70,right of=C3,label={below:1}] (barC3) {$\overline{C_3}$};
         \node[fill=green!70,right of=barC3,label={below:1}] (barC2) {$\overline{C_2}$};
-        \node[fill=red!70,right of=barC2,label={below:1}] (barC1) {$\overline{C_1}$};                    
-        
+        \node[fill=red!70,right of=barC2,label={below:1}] (barC1) {$\overline{C_1}$};
+
         \draw[-{Latex[length=2.5mm]}] (C1) edge[bend left] (C3);
         \draw[-{Latex[length=2.5mm]}] (C2) -- (C3);
         \draw[-{Latex[length=2.5mm]}] (C3) -- (barC3);
@@ -192,7 +192,7 @@ Na závěr shrneme naše úvahy do následujícího tvrzení:
 
     Naopak předpokládejme, že žádná komponenta neobsahuje dvojici opačných literálů, a ukažme, že potom existuje model. Označme $\mathcal G_\varphi^\ast$ graf vzniklý z $\mathcal G_\varphi$ kontrakcí silně souvislých komponent (a odstraněním smyček). Tento graf je acyklický, zvolme nějaké topologické uspořádání. Model zkonstruujeme tak, že zvolíme první dosud neohodnocenou komponentu v našem topologickém uspořádání, všechny literály v ní obsažené ohodnotíme 0, a opačné literály ohodnotíme 1. Takto pokračujeme dokud nejsou všechny komponenty ohodnoceny.
 
-    Proč v takto získaném modelu platí výrok $\varphi$? Kdyby ne, neplatila by některá z klauzulí. Jednotková klauzule $\ell$ musí platit, neboť v grafu $\mathcal G_\varphi$ máme hranu $\overline{\ell}\limplies\ell$. Stejná hrana je i v grafu komponent, tedy $\overline{\ell}$ předchází v topologickém uspořádání komponentu obsahující $\ell$. Při konstrukci modelu jsme museli ohodnotit $\overline{\ell}$ dříve než $\ell$, tedy $\overline{\ell}=0$ a $\ell=1$. Podobně, 2-klauzule $\ell_1\lor\ell_2$ také musí platit: máme hrany $\overline{\ell_1}\limplies\ell_2$ a $\overline{\ell_2}\limplies\ell_1$. Pokud jsme $\ell_1$ ohodnotili dříve než $\ell_2$, museli jsme kvůli hraně $\overline{\ell_1}\limplies\ell_2$ ohodnotit $\overline{\ell_1}=0$, tedy $\ell_1$ platí. Podobně pokud jsme ohodnotili nejdříve $\ell_2$, musí být $\overline{\ell_2}=0$ a $\ell_2=1$. 
+    Proč v takto získaném modelu platí výrok $\varphi$? Kdyby ne, neplatila by některá z klauzulí. Jednotková klauzule $\ell$ musí platit, neboť v grafu $\mathcal G_\varphi$ máme hranu $\overline{\ell}\limplies\ell$. Stejná hrana je i v grafu komponent, tedy $\overline{\ell}$ předchází v topologickém uspořádání komponentu obsahující $\ell$. Při konstrukci modelu jsme museli ohodnotit $\overline{\ell}$ dříve než $\ell$, tedy $\overline{\ell}=0$ a $\ell=1$. Podobně, 2-klauzule $\ell_1\lor\ell_2$ také musí platit: máme hrany $\overline{\ell_1}\limplies\ell_2$ a $\overline{\ell_2}\limplies\ell_1$. Pokud jsme $\ell_1$ ohodnotili dříve než $\ell_2$, museli jsme kvůli hraně $\overline{\ell_1}\limplies\ell_2$ ohodnotit $\overline{\ell_1}=0$, tedy $\ell_1$ platí. Podobně pokud jsme ohodnotili nejdříve $\ell_2$, musí být $\overline{\ell_2}=0$ a $\ell_2=1$.
 \end{proof}
 
 \begin{corollary}
@@ -221,7 +221,7 @@ Nyní si ukážeme další fragment SATu řešitelný v polynomiálním čase, t
 $$
 \neg p_1\lor \neg p_2\lor \dots \lor \neg p_n\lor q\ \sim\ (p_1\land p_2\land\dots \land p_n)\limplies q
 $$
-Hornovské výroky tedy dobře modelují systémy, kde splnění určitých podmínek zaručuje splnění jiné podmínky. Upozorněme, že jednotková klauzule $\ell$ je také hornovská. V kontextu logického programování se jí říká \emph{fakt}, pokud je literál pozitivní, a \emph{cíl} pokud je negativní.\footnote{Neboť dokazujeme sporem, více v pozdější kapitole o rezoluci a Prologu.} Hornovské výroky s alespoň jedním pozitivním a alespoň jedním negativním literálem jsou \emph{pravidla}. 
+Hornovské výroky tedy dobře modelují systémy, kde splnění určitých podmínek zaručuje splnění jiné podmínky. Upozorněme, že jednotková klauzule $\ell$ je také hornovská. V kontextu logického programování se jí říká \emph{fakt}, pokud je literál pozitivní, a \emph{cíl} pokud je negativní.\footnote{Neboť dokazujeme sporem, více v pozdější kapitole o rezoluci a Prologu.} Hornovské výroky s alespoň jedním pozitivním a alespoň jedním negativním literálem jsou \emph{pravidla}.
 
 \begin{example}
     Příkladem výroku, který je v CNF, ale není hornovský, je třeba $(p_1\lor p_2\lor\neg p_3)\land (\neg p_1\lor p_3)$. Jako příklad, na kterém budeme ilustrovat algoritmus, nám poslouží následující hornovský výrok:
@@ -230,12 +230,12 @@ Hornovské výroky tedy dobře modelují systémy, kde splnění určitých podm
     $$
 \end{example}
 
-Polynomiální algoritmus pro řešení problému Horn-SAT je založený na jednoduché myšlence \emph{jednotkové propagace}: Pokud náš výrok obsahuje \emph{jednotkovou} klauzuli, víme, jak musí být ohodnocena výroková proměnná obsažená v této klauzuli. A tuto znalost můžeme \emph{propagovat}---využít k zjednodušení výroku. 
+Polynomiální algoritmus pro řešení problému Horn-SAT je založený na jednoduché myšlence \emph{jednotkové propagace}: Pokud náš výrok obsahuje \emph{jednotkovou} klauzuli, víme, jak musí být ohodnocena výroková proměnná obsažená v této klauzuli. A tuto znalost můžeme \emph{propagovat}---využít k zjednodušení výroku.
 
 Náš výrok $\varphi$ obsahuje jednotkovou klauzuli $p_4$. Víme tedy, že v každém jeho modelu $v\in\M(\varphi)$ musí platit $v(p_4)=1$. To ale znamená, že v libovolném modelu výroku $\varphi$
 \begin{itemize}
     \item každá klauzule obsahující pozitivní literál $p_4$ je splněna, můžeme ji tedy z výroku odstranit,
-    \item negativní literál $\neg p_4$ nemůže být splněn, můžeme ho tedy odstranit ze všech klauzulí, které ho obsahují. 
+    \item negativní literál $\neg p_4$ nemůže být splněn, můžeme ho tedy odstranit ze všech klauzulí, které ho obsahují.
 \end{itemize}
 Tomu kroku se říká \emph{jednotková propagace}. Výsledkem je následující zjednodušený výrok, který označíme $\varphi^{p_4}$ (obecně $\varphi^\ell$ máme-li jednotkovou klauzuli $\ell$):
 $$
@@ -252,16 +252,16 @@ $$
 Výsledný výrok už neobsahuje jednotkovou klauzuli. To ale znamená, že každá klauzule obsahuje alespoň dva literály, a nejvýše jeden z nich může být pozitivní! (Zde potřebujeme hornovskost výroku.) Protože každá klauzule obsahuje negativní literál, stačí ohodnotit všechny zbývající proměnné 0, a výrok bude splněn: $v(p_1)=v(p_2)=v(p_3)=0$. Dostáváme tedy model $v=(0,0,0,1,0)$.
 
 \begin{example}
-    Co by se stalo, pokud by výrok nebyl splnitelný? Podívejme se na výrok 
+    Co by se stalo, pokud by výrok nebyl splnitelný? Podívejme se na výrok
     $$
     \psi=p\land (\neg p\lor q)\land (\neg q\lor r)\land\neg r
-    $$ 
-    a provádějme jednotkovou propagaci jako v předchozím příkladě: máme $v(p)=1$ a 
-$\psi^p=q\land (\neg q\lor r)\land\neg r$, dále $v(q)=1$ a $(\psi^p)^q=r\land\neg r$. 
+    $$
+    a provádějme jednotkovou propagaci jako v předchozím příkladě: máme $v(p)=1$ a
+$\psi^p=q\land (\neg q\lor r)\land\neg r$, dále $v(q)=1$ a $(\psi^p)^q=r\land\neg r$.
 Tento výrok je nesplnitelný, neboť obsahuje dvojici opačných jednotkových klauzulí. \footnote{Jinými slovy, v dalším kroku bychom provedli jednotkovou propagaci $r$, odstranili jednotkovou klauzuli $r$, a ze zbývající jednotkové klauzule $\neg r$ bychom odstranili literál $\neg r$, čímž by vznikla \emph{prázdná klauzule}, která je nesplnitelná.}
 \end{example}
 
-Shrňme si nyní algoritmus pro řešení problému Horn-SAT: 
+Shrňme si nyní algoritmus pro řešení problému Horn-SAT:
 
 \begin{algorithm}[Horn-SAT]
 \textbf{vstup}: výrok $\varphi$ v Hornově tvaru, \textbf{výstup}: model $\varphi$ nebo informace, že $\varphi$ není splnitelný
@@ -273,7 +273,7 @@ Shrňme si nyní algoritmus pro řešení problému Horn-SAT:
 \end{algorithm}
 
 \begin{proposition}
-Algoritmus je korektní.    
+Algoritmus je korektní.
 \end{proposition}
 \begin{proof}
 Korektnost plyne z Pozorování a z předchozí diskuze.
@@ -305,7 +305,7 @@ Algoritmus používá jednotkovou propagaci spolu s následujícím pozorování
 
 \begin{algorithm}[DPLL]
     \textbf{vstup}: výrok $\varphi$ v CNF, \textbf{výstup}: model $\varphi$ nebo informace, že  $\varphi$ není splnitelný
-    \begin{enumerate}                
+    \begin{enumerate}
         \item Dokud $\varphi$ obsahuje jednotkovou klauzuli $\ell$, ohodnoť literál $\ell$ hodnotou 1, proveď jednotkovou propagaci, a nahraď $\varphi$ výrokem $\varphi^\ell$.
          \item Dokud existuje literál $\ell$, který má ve $\varphi$ čistý výskyt, ohodnoť $\ell$ hodnotou 1, a odstraň klauzule obsahující $\ell$.
         \item Pokud $\varphi$ neobsahuje žádnou klauzuli, je splnitelný.
@@ -314,12 +314,12 @@ Algoritmus používá jednotkovou propagaci spolu s následujícím pozorování
     \end{enumerate}
 \end{algorithm}
 
-Algoritmus běží v exponenciálním čase: počet větvení výpočtu nemůže být větší než počet proměnných. Lze ukázat, že v nejhorším případě je opravdu potřeba exponenciální čas. Korektnost algoritmu není těžké ověřit. 
+Algoritmus běží v exponenciálním čase: počet větvení výpočtu nemůže být větší než počet proměnných. Lze ukázat, že v nejhorším případě je opravdu potřeba exponenciální čas. Korektnost algoritmu není těžké ověřit.
 
 \begin{proposition}
     Algoritmus DPLL řeší problém SAT.
 \end{proposition}
-    
+
 \begin{example}
     Ukážeme si běh algoritmu na následujícím příkladě:
     $$
@@ -339,16 +339,16 @@ Algoritmus běží v exponenciálním čase: počet větvení výpočtu nemůže
         \begin{itemize}
             \item[(q=1)] $(\neg q\lor\neg s)\land(q\lor s)\land q$. Po nastavení $v(q)=1$ a jednotkové propagaci dostáváme $\neg s$, po nastavení $v(s)=0$ a jednotkové propagaci dostáváme výrok neobsahující žádnou klauzuli, je tedy splnitelný ohodnocením $(1,1,0,0)$. Odpověď na problém splnitelnosti už máme, ostatní větve výpočtu nemusíme dokončovat. Pro ilustraci to ale provedeme.
             \item[(q=0)] $(\neg q\lor\neg s)\land(q\lor s)\land \neg q$. Jednotkovou propagací s $v(q)=0$ dostáváme $s$, po nastavení $v(s)=1$ a jednotkové propagaci máme prázdnou množinu klauzulí. Dostáváme model $(1,0,0,1)$.
-            
+
         \end{itemize}
         \item[(p=0)] Přidáme jednotkovou klauzuli $\neg p$:
         $$
         (\neg p\lor\neg q\lor\neg s)\land (p\lor s)\land(p\lor\neg s)\land(q\lor s)\land \neg p
         $$
-        Po provedení jednotkové propagace $\neg p$ máme $s\land \neg s\land(q\lor s)$. Po provedení jednotkové propagace $s$ máme $\square\land q$, kde $\square$ je prázdná klauzule. Výrok je tedy nesplnitelný a v této větvi nedostaneme žádné modely. 
+        Po provedení jednotkové propagace $\neg p$ máme $s\land \neg s\land(q\lor s)$. Po provedení jednotkové propagace $s$ máme $\square\land q$, kde $\square$ je prázdná klauzule. Výrok je tedy nesplnitelný a v této větvi nedostaneme žádné modely.
     \end{itemize}
 
-Zjistili jsme, že původní výrok je splnitelný. Našli jsme 2 modely: $(1,1,0,0)$ a $(1,0,0,1)$. Mohou ale existovat i další modely, ohodnocení $v(r)=0$ pro literál $\neg r$ s čistým výskytem nemusí být nutné pro splnění všech klauzulí; tento krok nezachovává množinu modelů, jen splnitelnost.    
+Zjistili jsme, že původní výrok je splnitelný. Našli jsme 2 modely: $(1,1,0,0)$ a $(1,0,0,1)$. Mohou ale existovat i další modely, ohodnocení $v(r)=0$ pro literál $\neg r$ s čistým výskytem nemusí být nutné pro splnění všech klauzulí; tento krok nezachovává množinu modelů, jen splnitelnost.
 \end{example}
 
 Co dále? Základní algoritmus DPLL, který systematicky prohledává prostor možných řešení, byl na konci 90. let 20. století různými způsoby doplněn a rozšířen. Zmiňme algoritmus zvaný \emph{Conflict-driven clause learning (CDCL)}. Ten je založený na myšlence, že ze selhání větve prohledávacího stromu se můžeme \emph{naučit} novou klauzuli, která tomuto konkrétnímu selhání (``konfliktu'') zabraňuje. Kromě toho se můžeme vrátit zpět ve stromu o více úrovní najednou (tzv. \emph{back-jumping}) na místo, kde jsme začali ohodnocovat proměnné v této nové klauzuli. Tím zabráníme opakovanému nalezení ``téhož'' konfliktu. Více o SAT solverech se dozvíte například v předmětu \href{https://is.cuni.cz/studium/predmety/index.php?do=predmet&kod=NAIL094}{NAIL094 Decision procedures and SAT/SMT solvers}.
