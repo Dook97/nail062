@@ -18,7 +18,7 @@ Moderní SAT solvery používají celou řadu technologií pro efektivní řeše
 Pro vyzkoušení SAT solvingu nám poslouží řešič \href{https://github.com/mi-ki/glucose-syrup}{\texttt{Glucose}}. Ten přijímá vstup v jednoduchém formátu \href{http://people.sc.fsu.edu/~jburkardt/data/cnf/cnf.html}{DIMACS CNF}. Ukažme si postup použití na následující hříčce zvané \emph{boardomino}:
 
 \begin{example}[Boardomino]
-Lze pokrýt šachovnici s chybějícími dvěma protilehlými rohy perfektně pokrýt kostkami domina?    
+Lze šachovnici s dvěma chybějícími protilehlými rohy perfektně pokrýt kostkami domina?    
 \end{example}
 
 Jak tento problém formalizovat? Zvolme výrokové proměnné $h_{i,j},v_{i,j}$ ($1\leq i,j\leq n$), kde $h_{i,j}$ znamená ``na pozici $(i,j)$ leží levá polovina horizontálně orientované kostky'' a podobně $v_{i,j}$ pro horní polovinu vertikální kostky. Zde $n=8$, ale můžeme vyzkoušet i pro jiné (sudé) rozměry šachovnice. Nyní axiomatizujeme všechny požadované vlastnosti:
